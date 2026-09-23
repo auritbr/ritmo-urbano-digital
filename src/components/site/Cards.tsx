@@ -72,7 +72,7 @@ export function TeamCard({ member, index = 0 }: { member: (typeof team)[number];
         <span className="absolute inset-x-0 top-0 h-1 bg-brand-primary transition-colors group-hover:bg-brand-secondary" aria-hidden="true" />
         <span className="label-text text-muted-foreground">{String(index + 1).padStart(2, "0")}</span>
         <h3 className="mt-2 font-display text-xl font-bold text-foreground">{member.name}</h3>
-        <p className="mt-1 text-sm font-bold uppercase tracking-[0.12em] text-brand-primary">{member.role}</p>
+        <p className="mt-1 text-sm font-semibold uppercase tracking-[0.12em] text-brand-primary">{member.role}</p>
         <p className="mt-3 text-sm leading-6 text-muted-foreground">{member.bio}</p>
         <IconCircleButton asChild variant="outline" size="md" className="mt-4 opacity-75 group-hover:opacity-100" label={`Abrir rede social de ${member.name}`}>
           <a href={member.social} target="_blank" rel="noreferrer">

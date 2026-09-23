@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { WhatsAppIcon } from "@/components/site/BrandIcons";
+import { IconCircleButton } from "@/components/ui/icon-circle-button";
 import { organization } from "@/data/site";
 
 export function FloatingControls() {
@@ -35,9 +36,9 @@ export function FloatingControls() {
     <>
       <div className="fixed bottom-5 left-4 z-[70] grid gap-3 sm:left-5">
         <div className="relative">
-          <Button variant="ghost" size="icon" className="liquid-button min-h-11 min-w-11 rounded-full" onClick={() => setCookiesOpen((value) => !value)} aria-label="Abrir preferências de cookies">
+          <IconCircleButton variant="glass-light" size="md" onClick={() => setCookiesOpen((value) => !value)} label="Abrir preferências de cookies">
             <Cookie aria-hidden="true" />
-          </Button>
+          </IconCircleButton>
           <span className="floating-tooltip">Cookies</span>
           {cookiesOpen ? (
             <div className="glass-panel absolute bottom-14 left-0 w-[min(82vw,22rem)] p-4">
@@ -52,9 +53,9 @@ export function FloatingControls() {
           ) : null}
         </div>
         <div className="relative">
-          <Button variant="ghost" size="icon" className="liquid-button min-h-11 min-w-11 rounded-full" onClick={() => setAccessOpen((value) => !value)} aria-label="Abrir recursos de acessibilidade">
+          <IconCircleButton variant="glass-light" size="md" onClick={() => setAccessOpen((value) => !value)} label="Abrir recursos de acessibilidade">
             <Accessibility aria-hidden="true" />
-          </Button>
+          </IconCircleButton>
           <span className="floating-tooltip">Acessibilidade</span>
           {accessOpen ? (
             <div className="glass-panel absolute bottom-14 left-0 w-[min(86vw,24rem)] p-4">
