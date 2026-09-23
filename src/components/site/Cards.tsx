@@ -1,47 +1,77 @@
-import { ArrowRight, ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, MoveUpRight } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
 import { IconCircleButton } from "@/components/ui/icon-circle-button";
-import { SoundWave, VinylOutline } from "@/components/site/UrbanGraphics";
+import { SoundWave, UrbanLines, VinylOutline } from "@/components/site/UrbanGraphics";
 import type { NewsItem, Project } from "@/data/site";
 import { team } from "@/data/site";
 
 export function ProjectFeature({
   project,
-  featured = false,
+  index = 0,
 }: {
   project: Project;
-  featured?: boolean;
+  index?: number;
 }) {
+  const visual = index % 3;
+
   return (
-    <article
-      className={`group relative overflow-hidden rounded-lg border border-border bg-card ${featured ? "md:grid md:grid-cols-[1.1fr_0.9fr]" : ""}`}
-    >
-      <div className={featured ? "aspect-[4/3] md:aspect-auto" : "aspect-[16/10]"}>
+    <article className="group min-w-0">
+      <div
+        className={`relative aspect-[4/3] overflow-hidden bg-muted ${
+          visual === 0
+            ? "rounded-t-full rounded-br-2xl"
+            : visual === 1
+              ? "rounded-bl-[35%] rounded-tr-2xl"
+              : "rounded-br-[35%] rounded-tl-2xl"
+        }`}
+      >
         <img
           src={project.image.src}
           alt={project.image.alt}
           className="size-full object-cover transition duration-500 group-hover:scale-[1.02]"
           loading="lazy"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" aria-hidden="true" />
+        {visual === 0 ? (
+          <VinylOutline className="absolute -right-8 -top-8 size-36 text-brand-primary opacity-90 transition-transform duration-300 group-hover:translate-x-1" />
+        ) : null}
+        {visual === 1 ? (
+          <SoundWave className="absolute bottom-5 right-5 w-32 text-brand-secondary transition-transform duration-300 group-hover:-translate-x-1" />
+        ) : null}
+        {visual === 2 ? (
+          <>
+            <UrbanLines className="absolute right-4 top-4 w-32 text-brand-primary transition-transform duration-300 group-hover:translate-x-1" />
+            <MoveUpRight className="absolute bottom-5 right-5 size-8 text-brand-secondary" aria-hidden="true" />
+          </>
+        ) : null}
       </div>
-      <div className="relative p-5 md:p-6">
-        <div className="mb-5 flex items-center justify-between gap-4">
+      <div className="relative border-t-2 border-brand-primary pt-5">
+        <div className="mb-3 flex items-center justify-between gap-4">
           <span className="label-text text-brand-primary">{project.category}</span>
-          <span className="rounded-full border border-border px-3 py-1 text-xs font-semibold text-muted-foreground">
+          <span className="text-xs font-semibold text-muted-foreground">
             {project.status}
           </span>
         </div>
-        <h3 className="font-display text-2xl font-semibold leading-tight text-foreground">
+        <h3 className="font-display text-xl font-bold leading-tight text-foreground md:text-2xl">
           {project.name}
         </h3>
-        <p className="mt-3 text-sm leading-7 text-muted-foreground">{project.summary}</p>
-        <Button asChild variant="link" className="mt-5 px-0 font-display font-bold">
-          <Link to="/projetos/$slug" params={{ slug: project.slug }}>
-            Ver projeto <ArrowRight aria-hidden="true" />
+        <p className="mt-3 text-sm leading-6 text-muted-foreground">{project.summary}</p>
+        <span className="mt-5 inline-flex items-center gap-3">
+          <IconCircleButton asChild variant="outline" size="sm" label={`Conhecer ${project.name}`}>
+            <Link to="/projetos/$slug" params={{ slug: project.slug }}>
+              <ArrowRight aria-hidden="true" />
+            </Link>
+          </IconCircleButton>
+          <Link
+            to="/projetos/$slug"
+            params={{ slug: project.slug }}
+            className="font-display text-sm font-semibold text-foreground transition-colors hover:text-brand-primary"
+          >
+            Conhecer projeto
           </Link>
-        </Button>
+        </span>
       </div>
     </article>
   );
