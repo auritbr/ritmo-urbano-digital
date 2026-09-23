@@ -18,3 +18,9 @@
 - [ ] Simplificar as três subpáginas de projeto e criar cards temáticos
 - [ ] Refinar o accordion e a lista de documentos da Transparência
 - [ ] Validar Notícias, Projetos, subpáginas, Transparência e heroes em desktop/mobile
+
+- [ ] Refinar os cards compactos de frentes na Home
+- [ ] Redesenhar os projetos da Home como blocos editoriais autorais
+- [ ] Substituir o mosaico da galeria por uma chamada gráfica centralizada
+- [ ] Redesenhar a chamada de Transparência da Home
+- [ ] Validar as quatro seções da Home em desktop e mobile

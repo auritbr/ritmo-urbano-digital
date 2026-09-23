@@ -1,10 +1,20 @@
-import { ArrowRight, CircleDot, MapPinned, Play, Radio, ShieldCheck } from "lucide-react";
+import {
+  Archive,
+  ArrowRight,
+  Award,
+  BadgeCheck,
+  ChartNoAxesColumn,
+  CircleDot,
+  FileText,
+  MapPinned,
+  MoveUpRight,
+} from "lucide-react";
 import { Link, createFileRoute } from "@tanstack/react-router";
 
 import { NewsCard, ProjectFeature } from "@/components/site/Cards";
 import { FinalCta } from "@/components/site/FinalCta";
-import { GalleryButton, Lightbox, useLightbox } from "@/components/site/Lightbox";
 import { SectionHeading } from "@/components/site/SectionHeading";
+import { SoundWave, UrbanLines, VinylOutline } from "@/components/site/UrbanGraphics";
 import { Button } from "@/components/ui/button";
 import { IconCircleButton } from "@/components/ui/icon-circle-button";
 import {
@@ -33,9 +43,15 @@ function Index() {
   const firstProject = projects[0];
   const secondProject = projects[1];
   const thirdProject = projects[2];
-  const galleryPreview = [images.stage, images.breaking, images.dj, images.graffiti, images.craft];
-  const lightbox = useLightbox(galleryPreview);
   if (!firstProject || !secondProject || !thirdProject) return null;
+
+  const transparencyItems = [
+    { label: "Documentos institucionais", icon: FileText },
+    { label: "Certificados", icon: BadgeCheck },
+    { label: "Reconhecimentos", icon: Award },
+    { label: "Relatórios", icon: ChartNoAxesColumn },
+    { label: "Registros", icon: Archive },
+  ];
 
   return (
     <>
@@ -167,29 +183,67 @@ function Index() {
         </div>
       </section>
 
-      <section className="section-y bg-surface">
+      <section className="bg-surface py-14 md:py-20">
         <div className="container-site">
           <SectionHeading
             label="Nossa atuação"
             title="Frentes que conectam técnica, convivência e território"
+            description="Ações integradas que unem formação, criação artística e participação comunitária."
           />
-          <div className="mt-10 grid gap-4 md:grid-cols-6">
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {actionAreas.map((area, index) => {
               const Icon = area.icon;
+              const detail = index % 6;
               return (
                 <article
                   key={area.title}
-                  className={`relative overflow-hidden rounded-lg border border-border bg-card p-5 ${index === 0 || index === 3 ? "md:col-span-3" : "md:col-span-2"}`}
+                  className="group relative min-h-48 overflow-hidden rounded-2xl border border-border bg-card p-5 transition duration-300 hover:-translate-y-0.5 hover:border-foreground/20"
                 >
-                  <span className="font-display text-5xl font-bold text-muted">{area.number}</span>
-                  <Icon
-                    className="absolute right-5 top-5 size-7 text-brand-primary"
-                    aria-hidden="true"
-                  />
-                  <h3 className="mt-8 font-display text-xl font-semibold text-foreground">
+                  <div className="flex items-center gap-3">
+                    <span className="label-text text-muted-foreground">{area.number}</span>
+                    <span className="h-px flex-1 bg-border" aria-hidden="true" />
+                    <Icon className="size-5 text-brand-primary" aria-hidden="true" />
+                  </div>
+                  <h3 className="mt-7 max-w-[80%] font-display text-lg font-bold text-foreground">
                     {area.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{area.description}</p>
+                  <p className="mt-2 max-w-[88%] text-sm leading-6 text-muted-foreground">
+                    {area.description}
+                  </p>
+                  {detail === 0 ? (
+                    <SoundWave className="absolute bottom-4 right-3 w-20 text-brand-primary opacity-45 transition-transform group-hover:-translate-x-1" />
+                  ) : null}
+                  {detail === 1 ? (
+                    <VinylOutline className="absolute -bottom-8 -right-8 size-24 text-brand-primary opacity-35 transition-transform group-hover:translate-x-1" />
+                  ) : null}
+                  {detail === 2 ? (
+                    <MoveUpRight
+                      className="absolute bottom-4 right-4 size-7 text-brand-secondary opacity-70 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
+                      aria-hidden="true"
+                    />
+                  ) : null}
+                  {detail === 3 ? (
+                    <span
+                      className="paper-grid absolute bottom-3 right-3 size-16 border border-border opacity-60"
+                      aria-hidden="true"
+                    />
+                  ) : null}
+                  {detail === 4 ? (
+                    <span
+                      className="absolute bottom-4 right-4 flex h-10 items-end gap-1 opacity-55"
+                      aria-hidden="true"
+                    >
+                      {["h-3", "h-6", "h-4", "h-8", "h-5"].map((height) => (
+                        <span key={height} className={`w-1.5 bg-brand-primary ${height}`} />
+                      ))}
+                    </span>
+                  ) : null}
+                  {detail === 5 ? (
+                    <span
+                      className="diagonal-stripe absolute bottom-0 right-0 size-20 opacity-70"
+                      aria-hidden="true"
+                    />
+                  ) : null}
                 </article>
               );
             })}
@@ -197,22 +251,23 @@ function Index() {
         </div>
       </section>
 
-      <section className="section-y bg-background">
+      <section className="bg-background py-14 md:py-20">
         <div className="container-site">
           <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <SectionHeading label="Projetos" title="Projetos que colocam a cultura em movimento" />
-            <Button asChild variant="outline">
-              <Link to="/projetos">
-                Ver todos <ArrowRight aria-hidden="true" />
-              </Link>
-            </Button>
+            <span className="inline-flex items-center gap-3">
+              <span className="font-display text-sm font-semibold text-foreground">Ver todos</span>
+              <IconCircleButton asChild variant="outline" size="md" label="Ver todos os projetos">
+                <Link to="/projetos">
+                  <ArrowRight aria-hidden="true" />
+                </Link>
+              </IconCircleButton>
+            </span>
           </div>
-          <div className="mt-10 grid gap-5 lg:grid-cols-[1.25fr_0.75fr]">
-            <ProjectFeature project={firstProject} featured />
-            <div className="grid gap-5">
-              <ProjectFeature project={secondProject} />
-              <ProjectFeature project={thirdProject} />
-            </div>
+          <div className="mt-9 grid gap-7 md:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+            <ProjectFeature project={firstProject} index={0} />
+            <ProjectFeature project={secondProject} index={1} />
+            <ProjectFeature project={thirdProject} index={2} />
           </div>
         </div>
       </section>
@@ -287,78 +342,86 @@ function Index() {
         </div>
       </section>
 
-      <section className="section-y bg-surface">
-        <div className="container-site grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div>
+      <section className="relative overflow-hidden bg-surface py-16 md:py-20">
+        <VinylOutline className="absolute -left-24 top-1/2 size-64 -translate-y-1/2 text-brand-primary opacity-10" />
+        <UrbanLines className="absolute right-5 top-8 w-44 text-foreground opacity-10" />
+        <p
+          className="pointer-events-none absolute inset-x-0 bottom-0 overflow-hidden text-center font-display text-[clamp(4rem,13vw,10rem)] font-bold leading-none text-foreground opacity-[0.035]"
+          aria-hidden="true"
+        >
+          MEMÓRIAS
+        </p>
+        <div className="container-site relative">
+          <div className="mx-auto max-w-3xl text-center">
             <SectionHeading
               label="Galeria"
               title="Histórias registradas em imagens"
               description="Registros de oficinas, rodas, apresentações e encontros que constroem a memória do Ponto de Cultura."
+              align="center"
             />
-            <Button
-              asChild
-              className="mt-6 bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary/90"
-            >
-              <Link to="/galeria">
-                Explorar galeria <ArrowRight aria-hidden="true" />
-              </Link>
-            </Button>
-          </div>
-          <div className="grid h-[28rem] grid-cols-4 grid-rows-3 gap-3">
-            {galleryPreview.map((image, index) => (
-              <GalleryButton
-                key={image.alt}
-                image={image}
-                onClick={() => lightbox.open(index)}
-                className={index === 0 ? "col-span-2 row-span-3" : "col-span-2"}
-              />
-            ))}
+            <SoundWave className="mx-auto mt-6 w-36 text-brand-primary" />
+            <span className="mt-6 inline-flex items-center gap-3">
+              <span className="font-display text-sm font-semibold text-foreground">
+                Explorar galeria
+              </span>
+              <IconCircleButton asChild variant="solid" size="md" label="Explorar galeria">
+                <Link to="/galeria">
+                  <ArrowRight aria-hidden="true" />
+                </Link>
+              </IconCircleButton>
+            </span>
           </div>
         </div>
       </section>
 
-      <section className="section-y bg-background">
-        <div className="container-site grid gap-8 rounded-lg border border-border bg-card p-6 md:grid-cols-[0.8fr_1.2fr] md:p-8">
-          <div>
+      <section className="bg-background py-14 md:py-20">
+        <div className="container-site grid gap-9 border-y border-border py-9 md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-14 md:py-12">
+          <div className="relative pl-4">
+            <span className="absolute left-0 top-0 h-16 w-1 bg-brand-primary" aria-hidden="true" />
             <p className="label-text text-brand-primary">Compromisso institucional</p>
-            <h2 className="mt-3 font-display text-3xl font-bold leading-tight tracking-[-0.02em] text-foreground md:text-5xl">
+            <h2 className="mt-3 max-w-xl font-display text-3xl font-bold leading-[1.08] text-foreground md:text-4xl">
               Transparência também faz parte da nossa cultura.
             </h2>
-          </div>
-          <div>
-            <p className="text-muted-foreground leading-8">
-              Organizamos documentos, certificados, reconhecimentos, relatórios e registros para
-              facilitar a consulta pública e fortalecer uma relação de confiança com a comunidade.
+            <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">
+              Organizamos informações e registros para facilitar a consulta pública e fortalecer uma
+              relação de confiança com a comunidade.
             </p>
-            <div className="mt-5 grid gap-2 sm:grid-cols-2">
-              {["Documentos institucionais", "Certificados", "Reconhecimentos", "Relatórios"].map(
-                (item) => (
-                  <span
-                    key={item}
-                    className="rounded-md border border-border bg-background px-3 py-2 text-sm font-semibold"
-                  >
-                    {item}
+            <span className="mt-6 inline-flex items-center gap-3">
+              <span className="font-display text-sm font-semibold text-foreground">
+                Acessar transparência
+              </span>
+              <IconCircleButton asChild variant="outline" size="md" label="Acessar transparência">
+                <Link to="/quem-somos/transparencia">
+                  <ArrowRight aria-hidden="true" />
+                </Link>
+              </IconCircleButton>
+            </span>
+          </div>
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-card px-5 py-2 md:px-6">
+            <span
+              className="paper-grid absolute -right-5 -top-5 size-28 opacity-40"
+              aria-hidden="true"
+            />
+            {transparencyItems.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.label}
+                  className="relative flex min-h-14 items-center gap-3 border-b border-border last:border-b-0"
+                >
+                  <Icon className="size-4 text-brand-primary" aria-hidden="true" />
+                  <span className="flex-1 text-sm font-semibold text-foreground">{item.label}</span>
+                  <span className="label-text text-muted-foreground">
+                    {String(index + 1).padStart(2, "0")}
                   </span>
-                ),
-              )}
-            </div>
-            <Button asChild variant="link" className="mt-5 px-0 font-display font-bold">
-              <Link to="/quem-somos/transparencia">
-                Acessar transparência <ArrowRight aria-hidden="true" />
-              </Link>
-            </Button>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       <FinalCta />
-      <Lightbox
-        images={galleryPreview}
-        index={lightbox.index}
-        onClose={lightbox.close}
-        onPrevious={lightbox.previous}
-        onNext={lightbox.next}
-      />
     </>
   );
 }
