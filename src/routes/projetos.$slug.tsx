@@ -74,7 +74,7 @@ function ProjetoPage() {
                   <div className="aspect-[16/10] overflow-hidden rounded-md"><img src={activity.image.src} alt={activity.image.alt} className="size-full object-cover" loading="lazy" /></div>
                   <div className="mt-4 flex items-start gap-3">
                     <span className="grid size-10 shrink-0 place-items-center rounded-full border border-border bg-background"><Icon className="size-5 text-brand-primary" aria-hidden="true" /></span>
-                    <div><h3 className="font-display text-lg font-black">{activity.name}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{activity.description}</p></div>
+                     <div><h3 className="font-display text-lg font-semibold">{activity.name}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{activity.description}</p></div>
                   </div>
                 </article>
               );
@@ -87,13 +87,13 @@ function ProjetoPage() {
           <div>
             <SectionHeading label="Metodologia" title="Aprender, experimentar, criar e compartilhar" dark />
             <div className="mt-8 grid gap-3">
-              {["Aprender", "Experimentar", "Criar", "Compartilhar"].map((step, index) => <div key={step} className="flex gap-4 rounded-lg border border-ink-line bg-ink-soft p-4"><span className="font-display text-2xl font-black text-brand-primary">{String(index + 1).padStart(2, "0")}</span><p className="font-display text-lg font-black">{step}</p></div>)}
+               {["Aprender", "Experimentar", "Criar", "Compartilhar"].map((step, index) => <div key={step} className="flex gap-4 rounded-lg border border-ink-line bg-ink-soft p-4"><span className="font-display text-2xl font-bold text-brand-primary">{String(index + 1).padStart(2, "0")}</span><p className="font-display text-lg font-semibold">{step}</p></div>)}
             </div>
           </div>
           <div>
             <SectionHeading label="Impacto" title="Indicadores do ciclo" dark />
             <div className="mt-8 grid grid-cols-2 gap-3">
-              {project.stats.map((stat) => <div key={stat.label} className="rounded-lg border border-ink-line bg-ink-soft p-5"><strong className="font-display text-4xl font-black text-ink-foreground">{stat.value}</strong><p className="mt-2 text-sm font-semibold uppercase tracking-[0.1em] text-ink-muted">{stat.label}</p></div>)}
+               {project.stats.map((stat) => <div key={stat.label} className="rounded-lg border border-ink-line bg-ink-soft p-5"><strong className="font-display text-4xl font-bold text-ink-foreground">{stat.value}</strong><p className="mt-2 text-sm font-semibold uppercase tracking-[0.1em] text-ink-muted">{stat.label}</p></div>)}
             </div>
           </div>
         </div>
@@ -110,7 +110,7 @@ function ProjetoPage() {
         <div className="container-site">
           <figure className="relative overflow-hidden rounded-lg border border-border bg-card p-8">
             <Quote className="absolute right-8 top-6 size-20 text-muted" aria-hidden="true" />
-            <blockquote className="relative max-w-3xl font-display text-2xl font-black leading-tight text-foreground">“{project.quote}”</blockquote>
+             <blockquote className="relative max-w-3xl font-display text-2xl font-semibold leading-tight text-foreground">“{project.quote}”</blockquote>
             <figcaption className="relative mt-5 text-sm font-bold uppercase tracking-[0.12em] text-brand-primary">{project.quoteAuthor}</figcaption>
           </figure>
         </div>

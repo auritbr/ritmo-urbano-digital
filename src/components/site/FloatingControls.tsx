@@ -40,7 +40,7 @@ export function FloatingControls() {
           <span className="floating-tooltip">Cookies</span>
           {cookiesOpen ? (
             <div className="glass-panel absolute bottom-14 left-0 w-[min(82vw,22rem)] p-4">
-              <h2 className="font-display text-base font-black text-foreground">Cookies</h2>
+               <h2 className="font-display text-base font-semibold text-foreground">Cookies</h2>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">Usamos cookies essenciais e métricas simples para melhorar a navegação neste site demonstrativo.</p>
               {accepted ? <p className="mt-3 flex items-center gap-2 text-sm font-semibold text-brand-primary"><Check className="size-4" aria-hidden="true" /> Preferências salvas.</p> : null}
               <div className="mt-4 flex gap-2">
@@ -57,7 +57,7 @@ export function FloatingControls() {
           <span className="floating-tooltip">Acessibilidade</span>
           {accessOpen ? (
             <div className="glass-panel absolute bottom-14 left-0 w-[min(86vw,24rem)] p-4">
-              <h2 className="font-display text-base font-black text-foreground">Acessibilidade</h2>
+               <h2 className="font-display text-base font-semibold text-foreground">Acessibilidade</h2>
               <div className="mt-4 grid gap-2">
                 <Button variant="outline" className="justify-start" onClick={() => setFontScale((value) => Math.min(value + 1, 3))}><Plus aria-hidden="true" /> Aumentar fonte</Button>
                 <Button variant="outline" className="justify-start" onClick={() => setFontScale((value) => Math.max(value - 1, -2))}><Minus aria-hidden="true" /> Diminuir fonte</Button>
@@ -73,10 +73,10 @@ export function FloatingControls() {
       </div>
       <div className="fixed bottom-5 right-4 z-[70] flex flex-col items-end gap-3 sm:right-5">
         <a className="grid min-h-11 min-w-11 place-items-center rounded-full bg-whatsapp text-whatsapp-foreground shadow-soft transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" href={`https://wa.me/${organization.whatsapp}`} target="_blank" rel="noreferrer" aria-label="Abrir conversa no WhatsApp">
-          <span className="font-display text-sm font-black">WA</span>
+          <span className="font-display text-sm font-bold">WA</span>
         </a>
         <a className="grid min-h-11 min-w-11 place-items-center rounded-full border border-border bg-background/85 text-foreground shadow-soft backdrop-blur-md transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" href="https://www.gov.br/governodigital/pt-br/vlibras" target="_blank" rel="noreferrer" aria-label="Abrir informações sobre V-Libras">
-          <span className="font-display text-xs font-black">VL</span>
+          <span className="font-display text-xs font-bold">VL</span>
         </a>
       </div>
     </>
