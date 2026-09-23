@@ -137,10 +137,6 @@
     letter-spacing: -0.02em;
   }
 
-  .font-display.font-black {
-    font-weight: 700;
-  }
-
   a,
   button,
   input,
@@ -187,7 +183,11 @@
 }
 
 @utility diagonal-stripe {
-  background-image: repeating-linear-gradient(135deg, transparent 0 16px, oklch(0.78 0.21 145 / 0.16) 16px 18px);
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0 16px,
+    oklch(0.78 0.21 145 / 0.16) 16px 18px
+  );
 }
 
 @utility glass-panel {
@@ -205,7 +205,10 @@
   box-shadow: 0 4px 20px color-mix(in oklab, var(--color-ink) 8%, transparent);
   backdrop-filter: blur(12px);
   border-radius: calc(var(--radius) + 0.25rem);
-  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
 
   &:hover {
     border-color: color-mix(in oklab, var(--color-ink-foreground) 34%, transparent);
@@ -220,11 +223,36 @@
   box-shadow: 0 8px 22px color-mix(in oklab, var(--color-foreground) 5%, transparent);
   backdrop-filter: blur(10px);
   border-radius: calc(var(--radius) + 0.2rem);
-  transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
 
   &:hover {
     background: color-mix(in oklab, var(--color-card) 78%, transparent);
     transform: translateY(-1px);
+  }
+}
+
+@utility news-glass-card {
+  border: 1px solid color-mix(in oklab, var(--color-card) 58%, var(--color-border));
+  background: color-mix(in oklab, var(--color-card) 68%, transparent);
+  box-shadow: 0 8px 30px color-mix(in oklab, var(--color-foreground) 4%, transparent);
+  backdrop-filter: blur(14px);
+  border-radius: calc(var(--radius) + 0.5rem);
+}
+
+[vw-access-button] {
+  right: 1rem !important;
+  top: 52% !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
+}
+
+@media (min-width: 640px) {
+  [vw-access-button] {
+    right: 1.25rem !important;
+    top: 50% !important;
   }
 }
 
@@ -237,7 +265,9 @@
   font-family: var(--font-display);
   font-size: 0.875rem;
   font-weight: 600;
-  transition: background-color 180ms ease, color 180ms ease;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
 }
 
 @utility nav-link-active {
