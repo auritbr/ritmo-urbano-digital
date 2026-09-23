@@ -74,7 +74,7 @@ function NoticiasPage() {
         <div className="container-site">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div
-              className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 md:mx-0 md:px-0"
+              className="-mx-4 flex min-w-0 gap-2 overflow-x-auto px-4 pb-2 md:mx-0 md:flex-1 md:px-0"
               aria-label="Categorias de notícias"
             >
               {categories.map((item) => {
@@ -98,7 +98,7 @@ function NoticiasPage() {
                 );
               })}
             </div>
-            <div className="relative w-full md:w-80">
+            <div className="relative w-full md:w-72 md:shrink-0 lg:w-80">
               <Search
                 className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
                 aria-hidden="true"

@@ -8,10 +8,14 @@ export function FinalCta({
   title = "Faça parte desse movimento.",
   text = "Conheça nossos projetos, acompanhe nossas ações e fortaleça a cultura produzida no território.",
   contactOnly = false,
+  projectsLabel = "Conheça os projetos",
+  contactLabel,
 }: {
   title?: string;
   text?: string;
   contactOnly?: boolean;
+  projectsLabel?: string;
+  contactLabel?: string;
 }) {
   return (
     <section className="section-y bg-ink text-ink-foreground">
@@ -40,7 +44,7 @@ export function FinalCta({
                   className="bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary/90"
                 >
                   <Link to="/projetos">
-                    Conheça os projetos <ArrowRight aria-hidden="true" />
+                    {projectsLabel} <ArrowRight aria-hidden="true" />
                   </Link>
                 </Button>
               ) : null}
@@ -50,7 +54,9 @@ export function FinalCta({
                 variant="outline"
                 className="border-ink-line bg-ink-soft text-ink-foreground hover:bg-ink-line"
               >
-                <Link to="/contato">{contactOnly ? "Entre em contato" : "Contato"}</Link>
+                <Link to="/contato">
+                  {contactLabel ?? (contactOnly ? "Entre em contato" : "Contato")}
+                </Link>
               </Button>
             </div>
           </div>

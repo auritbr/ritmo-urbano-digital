@@ -162,6 +162,8 @@ function ProjetoPage() {
       <FinalCta
         title="A cultura continua em movimento."
         text="Conheça outros projetos e converse com a equipe para fazer parte dessa construção coletiva."
+        projectsLabel="Conheça outros projetos"
+        contactLabel="Entre em contato"
       />
       <Lightbox
         images={project.gallery}

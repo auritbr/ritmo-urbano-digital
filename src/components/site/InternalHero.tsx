@@ -24,7 +24,7 @@ export function InternalHero({
       <div className="container-site relative grid min-h-[18rem] gap-6 pb-8 pt-24 sm:min-h-[20rem] md:min-h-[23rem] md:grid-cols-[1.2fr_0.8fr] md:items-end md:pb-10 md:pt-28 lg:min-h-[25rem]">
         <div className="max-w-3xl">
           <p className="label-text text-brand-secondary">{label}</p>
-          <h1 className="mt-3 max-w-[19ch] font-display text-[clamp(2rem,4vw,4.2rem)] font-bold leading-[1.04] tracking-[-0.02em] text-ink-foreground">
+          <h1 className="mt-3 max-w-[24ch] font-display text-[clamp(2rem,4vw,4.2rem)] font-bold leading-[1.04] tracking-[-0.02em] text-ink-foreground">
             {title}
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-ink-muted md:text-lg">
