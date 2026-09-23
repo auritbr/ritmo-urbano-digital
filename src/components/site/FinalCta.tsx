@@ -14,7 +14,7 @@ export function FinalCta({ title = "Faça parte desse movimento.", text = "Conhe
           <div className="relative grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
             <div className="max-w-3xl">
               <p className="label-text text-brand-secondary">CULTURA EM MOVIMENTO</p>
-              <h2 className="mt-3 font-display text-3xl font-black leading-tight md:text-5xl">{title}</h2>
+              <h2 className="mt-3 font-display text-3xl font-bold leading-tight tracking-[-0.02em] md:text-5xl">{title}</h2>
               <p className="mt-4 text-base leading-8 text-ink-muted md:text-lg">{text}</p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -26,7 +26,7 @@ export function FinalCta({ title = "Faça parte desse movimento.", text = "Conhe
               </Button>
             </div>
           </div>
-          <span className="pointer-events-none absolute -bottom-4 right-4 font-display text-7xl font-black uppercase leading-none text-ink-outline opacity-25 md:text-9xl">Cultura</span>
+          <span className="pointer-events-none absolute -bottom-4 right-4 font-display text-7xl font-bold uppercase leading-none text-ink-outline opacity-20 md:text-9xl">Cultura</span>
         </div>
       </div>
     </section>
