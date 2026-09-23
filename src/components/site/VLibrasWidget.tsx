@@ -9,9 +9,9 @@ declare global {
 export function VLibrasWidget() {
   useEffect(() => {
     const initialize = () => {
-      if (!window.VLibras || document.documentElement.dataset.vlibrasReady) return;
+      if (!window.VLibras || document.documentElement.dataset["vlibrasReady"]) return;
       new window.VLibras.Widget("https://vlibras.gov.br/app");
-      document.documentElement.dataset.vlibrasReady = "true";
+      document.documentElement.dataset["vlibrasReady"] = "true";
     };
     const existing = document.querySelector<HTMLScriptElement>('script[data-vlibras-plugin="true"]');
     if (existing) {
@@ -22,7 +22,7 @@ export function VLibrasWidget() {
     const script = document.createElement("script");
     script.src = "https://vlibras.gov.br/app/vlibras-plugin.js";
     script.async = true;
-    script.dataset.vlibrasPlugin = "true";
+    script.dataset["vlibrasPlugin"] = "true";
     script.addEventListener("load", initialize);
     document.body.appendChild(script);
     return () => script.removeEventListener("load", initialize);
