@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
+import { ArrowLeft, ArrowRight, Grid3X3, MoveRight } from "lucide-react";
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 
 import { FinalCta } from "@/components/site/FinalCta";
@@ -42,7 +42,7 @@ function ProjetoPage() {
 
   return (
     <>
-      <section className="relative min-h-[78dvh] overflow-hidden bg-ink text-ink-foreground">
+      <section className="relative min-h-[19rem] overflow-hidden bg-ink text-ink-foreground sm:min-h-[21rem] md:min-h-[24rem] lg:min-h-[26rem]">
         <img
           src={project.image.src}
           alt={project.image.alt}
@@ -50,9 +50,9 @@ function ProjetoPage() {
         />
         <div className="absolute inset-0 bg-ink/74" aria-hidden="true" />
         <div className="absolute inset-0 urban-grid opacity-25" aria-hidden="true" />
-        <div className="container-site relative flex min-h-[78dvh] items-end pb-12 pt-32">
+        <div className="container-site relative flex min-h-[19rem] items-end pb-7 pt-24 sm:min-h-[21rem] md:min-h-[24rem] md:pb-9 md:pt-28 lg:min-h-[26rem]">
           <div className="max-w-4xl">
-            <div className="mb-8 inline-flex items-center gap-3">
+            <div className="mb-4 inline-flex items-center gap-3">
               <IconCircleButton asChild variant="glass-dark" size="md" label="Voltar para projetos">
                 <Link to="/projetos">
                   <ArrowLeft
@@ -69,126 +69,62 @@ function ProjetoPage() {
               </Link>
             </div>
             <p className="label-text text-brand-secondary">Projeto</p>
-            <h1 className="mt-4 max-w-[17ch] font-display text-[clamp(2.5rem,5vw,5rem)] font-bold leading-[1.03] tracking-[-0.02em]">
+            <h1 className="mt-2.5 max-w-[19ch] font-display text-[clamp(2rem,4vw,4.2rem)] font-bold leading-[1.04] tracking-[-0.02em]">
               {project.name}
             </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-ink-muted">{project.description}</p>
-            <dl className="mt-8 grid gap-3 sm:grid-cols-4">
-              {[
-                { label: "Público", value: project.audience },
-                { label: "Área", value: project.area },
-                { label: "Local", value: project.location },
-                { label: "Situação", value: project.status },
-              ].map((item) => (
-                <div key={item.label} className="rounded-lg border border-ink-line bg-ink-soft p-4">
-                  <dt className="label-text text-brand-primary">{item.label}</dt>
-                  <dd className="mt-2 text-sm text-ink-muted">{item.value}</dd>
-                </div>
-              ))}
-            </dl>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-ink-muted md:text-lg">{project.description}</p>
           </div>
         </div>
       </section>
-      <section className="section-y bg-background">
-        <div className="container-site grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-center">
-          <img
-            src={project.gallery[1]?.src ?? project.image.src}
-            alt={project.gallery[1]?.alt ?? project.image.alt}
-            className="h-[28rem] w-full rounded-lg object-cover"
-            loading="lazy"
-          />
-          <div>
-            <SectionHeading label="Sobre o projeto" title="Sobre o projeto" />
-            <div className="mt-5 grid gap-4 leading-8 text-muted-foreground">
+      <section className="bg-background py-14 md:py-16">
+        <div className="container-site mx-auto max-w-[53.125rem] text-center">
+          <SectionHeading label="Sobre o projeto" title={project.name} align="center" />
+          <div className="mx-auto mt-5 grid max-w-[51.25rem] gap-4 text-base leading-8 text-muted-foreground md:text-lg">
               {project.longText.map((text) => (
                 <p key={text}>{text}</p>
               ))}
-            </div>
           </div>
+          <div className="mx-auto mt-6 h-1 w-20 bg-brand-primary" aria-hidden="true" />
         </div>
       </section>
-      <section className="section-y bg-surface paper-grid">
+      <section className="bg-surface py-14 paper-grid md:py-16">
         <div className="container-site">
           <SectionHeading
             label="Atividades"
             title="O que acontece no projeto"
             description="Oficinas e vivências editáveis, pensadas para receber novas modalidades de acordo com cada ciclo."
           />
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {project.activities.map((activity) => {
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {[...project.activities, {
+              name: "Registro e memória",
+              description: "Documentação dos processos, encontros e criações que constroem a trajetória do projeto.",
+              icon: project.slug === "projeto-1" ? MoveRight : Grid3X3,
+              image: project.image,
+            }].slice(0, project.activities.length <= 3 ? 4 : 6).map((activity, index) => {
               const Icon = activity.icon;
               return (
                 <article
                   key={activity.name}
-                  className="relative overflow-hidden rounded-lg border border-border bg-card p-4"
+                  className="group relative min-h-52 overflow-hidden rounded-xl border border-border bg-card p-5"
                 >
-                  <div className="aspect-[16/10] overflow-hidden rounded-md">
-                    <img
-                      src={activity.image.src}
-                      alt={activity.image.alt}
-                      className="size-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="mt-4 flex items-start gap-3">
-                    <span className="grid size-10 shrink-0 place-items-center rounded-full border border-border bg-background">
-                      <Icon className="size-5 text-brand-primary" aria-hidden="true" />
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="font-display text-sm font-bold text-brand-primary">{String(index + 1).padStart(2, "0")}</span>
+                    <span className={`grid size-10 place-items-center border border-border text-brand-primary ${index % 3 === 0 ? "rounded-full" : index % 3 === 1 ? "rounded-tl-2xl rounded-br-2xl" : "rounded-md"}`}>
+                      <Icon className="size-5" aria-hidden="true" />
                     </span>
-                    <div>
-                      <h3 className="font-display text-lg font-semibold">{activity.name}</h3>
-                      <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                        {activity.description}
-                      </p>
-                    </div>
                   </div>
+                  <h3 className="mt-7 font-display text-lg font-bold uppercase leading-tight">{activity.name}</h3>
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{activity.description}</p>
+                  <div className={`absolute bottom-0 left-5 right-5 h-1 transition-transform duration-300 group-hover:scale-x-105 ${index % 2 === 0 ? "bg-brand-primary" : "bg-brand-secondary"}`} aria-hidden="true" />
                 </article>
               );
             })}
           </div>
         </div>
       </section>
-      <section className="section-y bg-ink text-ink-foreground">
-        <div className="container-site grid gap-8 lg:grid-cols-2">
-          <div>
-            <SectionHeading
-              label="Metodologia"
-              title="Aprender, experimentar, criar e compartilhar"
-              dark
-            />
-            <div className="mt-8 grid gap-3">
-              {["Aprender", "Experimentar", "Criar", "Compartilhar"].map((step, index) => (
-                <div
-                  key={step}
-                  className="flex gap-4 rounded-lg border border-ink-line bg-ink-soft p-4"
-                >
-                  <span className="font-display text-2xl font-bold text-brand-primary">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  <p className="font-display text-lg font-semibold">{step}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <SectionHeading label="Impacto" title="Indicadores do ciclo" dark />
-            <div className="mt-8 grid grid-cols-2 gap-3">
-              {project.stats.map((stat) => (
-                <div key={stat.label} className="rounded-lg border border-ink-line bg-ink-soft p-5">
-                  <strong className="font-display text-4xl font-bold text-ink-foreground">
-                    {stat.value}
-                  </strong>
-                  <p className="mt-2 text-sm font-semibold uppercase tracking-[0.1em] text-ink-muted">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
       <section className="section-y bg-background">
         <div className="container-site">
-          <SectionHeading label="Galeria" title="Registros do projeto" />
+          <SectionHeading label="Registros" title="Galeria do projeto" />
           <div className="mt-10 grid auto-rows-[12rem] gap-3 md:grid-cols-4">
             {project.gallery.map((image, index) => (
               <GalleryButton
@@ -201,22 +137,9 @@ function ProjetoPage() {
           </div>
         </div>
       </section>
-      <section className="bg-surface py-16">
-        <div className="container-site">
-          <figure className="relative overflow-hidden rounded-lg border border-border bg-card p-8">
-            <Quote className="absolute right-8 top-6 size-20 text-muted" aria-hidden="true" />
-            <blockquote className="relative max-w-3xl font-display text-2xl font-semibold leading-tight text-foreground">
-              “{project.quote}”
-            </blockquote>
-            <figcaption className="relative mt-5 text-sm font-bold uppercase tracking-[0.12em] text-brand-primary">
-              {project.quoteAuthor}
-            </figcaption>
-          </figure>
-        </div>
-      </section>
       <FinalCta
-        title="A cultura continua quando a gente participa."
-        text="Conheça outros projetos, acompanhe os registros e fale com a equipe para fazer parte dessa construção."
+        title="A cultura continua em movimento."
+        text="Conheça outros projetos e converse com a equipe para fazer parte dessa construção coletiva."
       />
       <Lightbox
         images={project.gallery}

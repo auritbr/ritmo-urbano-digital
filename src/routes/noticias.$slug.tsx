@@ -87,16 +87,16 @@ function NoticiaPage() {
 
   return (
     <>
-      <section className="relative min-h-[68dvh] overflow-hidden bg-ink text-ink-foreground md:min-h-[72dvh]">
+      <section className="relative min-h-[19rem] overflow-hidden bg-ink text-ink-foreground sm:min-h-[21rem] md:min-h-[24rem] lg:min-h-[26rem]">
         <img
           src={article.image.src}
           alt={article.image.alt}
           className="absolute inset-0 size-full object-cover"
         />
         <div className="absolute inset-0 bg-ink/76" aria-hidden="true" />
-        <div className="container-site relative flex min-h-[68dvh] items-end pb-10 pt-28 md:min-h-[72dvh] md:pb-14 md:pt-32">
+        <div className="container-site relative flex min-h-[19rem] items-end pb-7 pt-24 sm:min-h-[21rem] md:min-h-[24rem] md:pb-9 md:pt-28 lg:min-h-[26rem]">
           <div className="max-w-5xl">
-            <div className="mb-7 inline-flex items-center gap-3">
+            <div className="mb-4 inline-flex items-center gap-3">
               <IconCircleButton asChild variant="glass-dark" size="md" label="Voltar para Notícias">
                 <Link to="/noticias">
                   <ArrowLeft
@@ -116,10 +116,10 @@ function NoticiaPage() {
               <span className="text-brand-secondary">{article.category}</span>
               <time className="text-ink-muted">{article.date}</time>
             </div>
-            <h1 className="mt-4 max-w-[17ch] font-display text-[clamp(2.35rem,5vw,5.2rem)] font-bold leading-[1.02] tracking-[-0.02em]">
+            <h1 className="mt-2.5 max-w-[21ch] font-display text-[clamp(2rem,4vw,4rem)] font-bold leading-[1.04] tracking-[-0.02em]">
               {article.title}
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-ink-muted md:text-lg">
+            <p className="mt-3 max-w-2xl text-base leading-7 text-ink-muted md:text-lg">
               {article.excerpt}
             </p>
           </div>
