@@ -1,10 +1,9 @@
-import { ArrowLeft, ArrowRight, Grid3X3, MoveRight } from "lucide-react";
+import { ArrowLeft, Grid3X3, MoveRight } from "lucide-react";
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 
 import { FinalCta } from "@/components/site/FinalCta";
 import { GalleryButton, Lightbox, useLightbox } from "@/components/site/Lightbox";
 import { SectionHeading } from "@/components/site/SectionHeading";
-import { Button } from "@/components/ui/button";
 import { IconCircleButton } from "@/components/ui/icon-circle-button";
 import { getProject } from "@/data/site";
 
