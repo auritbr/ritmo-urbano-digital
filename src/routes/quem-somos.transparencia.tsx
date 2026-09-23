@@ -1,11 +1,11 @@
-import { Download, Eye, ShieldCheck } from "lucide-react";
+import { Download, FileText, ShieldCheck } from "lucide-react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import { InternalHero } from "@/components/site/InternalHero";
 import { FinalCta } from "@/components/site/FinalCta";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { SoundWave } from "@/components/site/UrbanGraphics";
-import { IconCircleButton } from "@/components/ui/icon-circle-button";
+import { Button } from "@/components/ui/button";
 import {
   Accordion,
   AccordionContent,
@@ -67,6 +67,8 @@ function TransparenciaPage() {
 }
 
 function MagnifierContent() {
+  const fileSizes = ["147.4 KB", "314.9 KB", "32.2 KB", "228.6 KB"];
+
   return (
     <div className="container-site max-w-[60rem]">
       <div className="mx-auto max-w-[50rem] text-center">
@@ -85,7 +87,7 @@ function MagnifierContent() {
             <AccordionItem
               key={category.name}
               value={category.name}
-              className="rounded-xl border border-border bg-card px-4 md:px-5"
+              className="overflow-hidden rounded-xl border border-border bg-card px-4 transition-colors duration-300 data-[state=open]:border-foreground/20 md:px-5"
             >
               <AccordionTrigger className="min-h-16 gap-3 py-3 no-underline hover:no-underline md:min-h-[4.5rem]">
                 <span className="flex min-w-0 items-center gap-4 text-left">
@@ -102,63 +104,33 @@ function MagnifierContent() {
                   </span>
                 </span>
               </AccordionTrigger>
-              <AccordionContent>
-                <div className="hidden overflow-x-auto pb-2 md:block">
-                  <table className="w-full min-w-[42rem] text-left text-sm">
-                    <thead className="border-b border-border text-xs uppercase tracking-[0.1em] text-muted-foreground">
-                      <tr>
-                        <th className="py-3">Nome do documento</th>
-                        <th>Ano</th>
-                        <th>Tipo</th>
-                        <th className="text-right">Ações</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {category.docs.map((doc, index) => (
-                        <tr
-                          key={doc}
-                          className="border-b border-border/70 transition-colors hover:bg-muted/50 last:border-0"
-                        >
-                          <td className="py-3 font-semibold text-foreground">{doc}</td>
-                          <td>{2026 - ((categoryIndex + index) % 5)}</td>
-                          <td>PDF</td>
-                          <td className="py-2 text-right">
-                            <div className="flex justify-end gap-2">
-                              <IconCircleButton label="Visualizar" size="sm" variant="outline">
-                                <Eye aria-hidden="true" />
-                              </IconCircleButton>
-                              <IconCircleButton label="Baixar" size="sm" variant="outline">
-                                <Download aria-hidden="true" />
-                              </IconCircleButton>
-                            </div>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                <div className="grid gap-3 pb-2 md:hidden">
+              <AccordionContent className="pb-1">
+                <div className="border-t border-border">
                   {category.docs.map((doc, index) => (
-                    <div key={doc} className="rounded-lg border border-border bg-background p-3.5">
-                      <p className="font-semibold text-foreground">{doc}</p>
-                      <dl className="mt-3 grid grid-cols-2 gap-3 text-sm text-muted-foreground">
-                        <div>
-                          <dt className="label-text text-[0.65rem]">Ano</dt>
-                          <dd className="mt-1">{2026 - ((categoryIndex + index) % 5)}</dd>
+                    <div
+                      key={doc}
+                      className="flex flex-col gap-4 border-b border-border/70 py-4 last:border-0 sm:flex-row sm:items-center sm:justify-between"
+                    >
+                      <div className="flex min-w-0 items-start gap-3">
+                        <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-muted text-muted-foreground">
+                          <FileText className="size-[1.125rem]" aria-hidden="true" />
+                        </span>
+                        <div className="min-w-0">
+                          <p className="font-display text-sm font-semibold leading-6 text-foreground md:text-base">
+                            {doc}
+                          </p>
+                          <span className="mt-1.5 inline-flex rounded-full bg-muted px-2.5 py-1 text-xs font-semibold text-muted-foreground">
+                            Arquivo PDF • {fileSizes[(categoryIndex + index) % fileSizes.length]}
+                          </span>
                         </div>
-                        <div>
-                          <dt className="label-text text-[0.65rem]">Tipo</dt>
-                          <dd className="mt-1">PDF</dd>
-                        </div>
-                      </dl>
-                      <div className="mt-3 flex gap-2">
-                        <IconCircleButton label="Visualizar" size="sm" variant="outline">
-                          <Eye aria-hidden="true" />
-                        </IconCircleButton>
-                        <IconCircleButton label="Baixar" size="sm" variant="outline">
-                          <Download aria-hidden="true" />
-                        </IconCircleButton>
                       </div>
+                      <Button
+                        type="button"
+                        className="h-[2.625rem] w-full shrink-0 rounded-full bg-ink px-5 text-ink-foreground hover:bg-ink/90 sm:w-auto"
+                        aria-label={`Baixar ${doc}`}
+                      >
+                        Baixar Documento <Download aria-hidden="true" />
+                      </Button>
                     </div>
                   ))}
                 </div>

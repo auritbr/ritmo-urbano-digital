@@ -1,10 +1,9 @@
-import { ChevronLeft, ChevronRight, Search } from "lucide-react";
+import { ChevronLeft, ChevronRight, Circle, Search } from "lucide-react";
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 
 import { NewsCard } from "@/components/site/Cards";
 import { InternalHero } from "@/components/site/InternalHero";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { IconCircleButton } from "@/components/ui/icon-circle-button";
 import { images, news } from "@/data/site";
@@ -75,22 +74,31 @@ function NoticiasPage() {
         <div className="container-site">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div
-              className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-2 md:mx-0 md:px-0"
+              className="-mx-4 flex min-w-0 gap-2 overflow-x-auto px-4 pb-2 md:mx-0 md:flex-1 md:px-0"
               aria-label="Categorias de notícias"
             >
-              {categories.map((item) => (
-                <Button
-                  key={item}
-                  variant="ghost"
-                  className={`liquid-control h-10 shrink-0 px-4 ${category === item ? "border-brand-primary bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary/90" : ""}`}
-                  onClick={() => selectCategory(item)}
-                  aria-pressed={category === item}
-                >
-                  {item}
-                </Button>
-              ))}
+              {categories.map((item) => {
+                const active = category === item;
+                return (
+                  <button
+                    key={item}
+                    type="button"
+                    className="group flex h-11 shrink-0 items-center gap-2.5 rounded-full pr-2 font-display text-sm font-semibold text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    onClick={() => selectCategory(item)}
+                    aria-pressed={active}
+                  >
+                    <span
+                      className={`grid size-10 shrink-0 place-items-center rounded-full border transition-all ${active ? "border-brand-primary bg-brand-primary text-brand-primary-foreground" : "liquid-control text-muted-foreground group-hover:text-foreground"}`}
+                      aria-hidden="true"
+                    >
+                      <Circle className={`size-2.5 ${active ? "fill-current" : ""}`} />
+                    </span>
+                    <span>{item}</span>
+                  </button>
+                );
+              })}
             </div>
-            <div className="relative w-full md:w-80">
+            <div className="relative w-full md:w-72 md:shrink-0 lg:w-80">
               <Search
                 className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground"
                 aria-hidden="true"
