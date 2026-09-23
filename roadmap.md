@@ -7,4 +7,4 @@
 - [x] Refinar galeria principal
 - [x] Reduzir e compactar o Acervo da Transparência
 - [x] Adicionar grafismos Hip Hop discretos
-- [ ] Validar desktop, mobile e interações
+- [x] Validar desktop, mobile e interações
