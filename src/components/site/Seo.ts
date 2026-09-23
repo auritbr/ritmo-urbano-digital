@@ -1,0 +1,27 @@
+import { organization } from "@/data/site";
+
+export function pageMeta(title: string, description: string, path: string, type = "website") {
+  return {
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: type },
+      { property: "og:url", content: path },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: path }],
+  };
+}
+
+export const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CivicStructure",
+  name: organization.name,
+  alternateName: organization.shortName,
+  description: organization.description,
+  email: organization.email,
+  telephone: organization.phone,
+  address: organization.address,
+};
