@@ -39,7 +39,7 @@ function GaleriaPage() {
               offset += event.photos.length;
               return (
                 <section key={event.title}>
-                   <h2 className="font-display text-3xl font-bold leading-[1.08] tracking-[-0.02em] text-foreground md:text-5xl">{event.title}</h2>
+                   <h2 className="max-w-4xl font-display text-2xl font-bold leading-[1.15] tracking-[-0.015em] text-foreground sm:text-3xl lg:text-4xl">{event.title}</h2>
                    <SoundWave className="mt-4 w-28 text-brand-primary" />
                    <div className="mt-7 grid auto-rows-[10rem] grid-cols-2 gap-3 md:auto-rows-[12rem] lg:grid-cols-4">
                     {event.photos.map((image, index) => (

@@ -6,6 +6,7 @@ import { FinalCta } from "@/components/site/FinalCta";
 import { GalleryButton, Lightbox, useLightbox } from "@/components/site/Lightbox";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { Button } from "@/components/ui/button";
+import { IconCircleButton } from "@/components/ui/icon-circle-button";
 import { actionAreas, hipHopElements, images, institutionalNumbers, news, organization, projects } from "@/data/site";
 import { pageMeta } from "@/components/site/Seo";
 
@@ -48,9 +49,10 @@ function Index() {
                 <Button asChild size="lg" className="bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary/90">
                   <Link to="/quem-somos">Conheça nossa história <ArrowRight aria-hidden="true" /></Link>
                 </Button>
-                <Button asChild size="lg" variant="ghost" className="liquid-button">
-                  <Link to="/projetos">Conheça os projetos</Link>
-                </Button>
+                <span className="inline-flex items-center gap-3">
+                  <IconCircleButton asChild variant="glass-dark" size="md" label="Conheça os projetos"><Link to="/projetos"><ArrowRight aria-hidden="true" /></Link></IconCircleButton>
+                  <Link to="/projetos" className="font-display text-sm font-semibold text-ink-foreground hover:text-brand-primary">Conheça os projetos</Link>
+                </span>
               </div>
             </div>
             <aside className="hidden rounded-lg border border-ink-line bg-ink-soft p-5 backdrop-blur-sm md:block" aria-label="Símbolos culturais">

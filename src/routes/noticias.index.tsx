@@ -6,6 +6,7 @@ import { NewsCard } from "@/components/site/Cards";
 import { InternalHero } from "@/components/site/InternalHero";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { IconCircleButton } from "@/components/ui/icon-circle-button";
 import { images, news } from "@/data/site";
 import { pageMeta } from "@/components/site/Seo";
 
@@ -62,9 +63,9 @@ function NoticiasPage() {
                 </Button>
               ))}
             </div>
-            <div className="relative w-full md:w-72">
+            <div className="relative w-full md:w-80">
               <Search className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" aria-hidden="true" />
-              <Input value={query} onChange={(event) => { setQuery(event.target.value); setPage(1); }} className="liquid-control h-10 pl-9" placeholder="Buscar notícias..." aria-label="Buscar notícias" />
+               <Input value={query} onChange={(event) => { setQuery(event.target.value); setPage(1); }} className="liquid-control h-10 rounded-full pl-9 focus-visible:border-brand-primary focus-visible:ring-0" placeholder="Buscar notícias..." aria-label="Buscar notícias" />
             </div>
           </div>
           {visible.length > 0 ? (
@@ -79,13 +80,13 @@ function NoticiasPage() {
           )}
            {pages > 1 ? (
              <nav className="mt-10 flex items-center justify-center gap-1.5" aria-label="Paginação de notícias">
-               <Button variant="ghost" size="icon" className="liquid-control size-10 shrink-0" onClick={() => setPage((value) => Math.max(1, value - 1))} disabled={page === 1} aria-label="Página anterior"><ChevronLeft aria-hidden="true" /></Button>
+               <IconCircleButton label="Página anterior" size="md" onClick={() => setPage((value) => Math.max(1, value - 1))} disabled={page === 1}><ChevronLeft aria-hidden="true" /></IconCircleButton>
                {paginationItems(page, pages).map((item) => typeof item === "number" ? (
-                 <Button key={item} variant="ghost" size="icon" className={`liquid-control size-10 shrink-0 ${page === item ? "border-foreground bg-foreground text-background hover:bg-foreground/90" : ""}`} onClick={() => setPage(item)} aria-current={page === item ? "page" : undefined} aria-label={`Página ${item}`}>
+                 <IconCircleButton key={item} label={`Página ${item}`} size="md" variant={page === item ? "solid" : "glass-light"} onClick={() => setPage(item)} aria-current={page === item ? "page" : undefined}>
                    {item}
-                 </Button>
+                 </IconCircleButton>
                ) : <span key={item} className="grid size-7 shrink-0 place-items-center text-sm text-muted-foreground" aria-hidden="true">…</span>)}
-               <Button variant="ghost" size="icon" className="liquid-control size-10 shrink-0" onClick={() => setPage((value) => Math.min(pages, value + 1))} disabled={page === pages} aria-label="Próxima página"><ChevronRight aria-hidden="true" /></Button>
+               <IconCircleButton label="Próxima página" size="md" onClick={() => setPage((value) => Math.min(pages, value + 1))} disabled={page === pages}><ChevronRight aria-hidden="true" /></IconCircleButton>
              </nav>
            ) : null}
         </div>
