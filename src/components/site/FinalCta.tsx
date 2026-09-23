@@ -4,7 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { images } from "@/data/site";
 
-export function FinalCta({ title = "Faça parte desse movimento.", text = "Conheça nossos projetos, acompanhe nossas ações e fortaleça a cultura produzida no território." }: { title?: string; text?: string }) {
+export function FinalCta({ title = "Faça parte desse movimento.", text = "Conheça nossos projetos, acompanhe nossas ações e fortaleça a cultura produzida no território.", contactOnly = false }: { title?: string; text?: string; contactOnly?: boolean }) {
   return (
     <section className="section-y bg-ink text-ink-foreground">
       <div className="container-site">
@@ -18,11 +18,9 @@ export function FinalCta({ title = "Faça parte desse movimento.", text = "Conhe
               <p className="mt-4 text-base leading-8 text-ink-muted md:text-lg">{text}</p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Button asChild size="lg" className="bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary/90">
-                <Link to="/projetos">Conheça nossos projetos <ArrowRight aria-hidden="true" /></Link>
-              </Button>
+              {!contactOnly ? <Button asChild size="lg" className="bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary/90"><Link to="/projetos">Conheça os projetos <ArrowRight aria-hidden="true" /></Link></Button> : null}
               <Button asChild size="lg" variant="outline" className="border-ink-line bg-ink-soft text-ink-foreground hover:bg-ink-line">
-                <Link to="/contato">Entre em contato</Link>
+                <Link to="/contato">{contactOnly ? "Entre em contato" : "Contato"}</Link>
               </Button>
             </div>
           </div>
