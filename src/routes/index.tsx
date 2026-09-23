@@ -56,7 +56,7 @@ function Index() {
             <aside className="hidden rounded-lg border border-ink-line bg-ink-soft p-5 backdrop-blur-sm md:block" aria-label="Símbolos culturais">
               <p className="label-text text-brand-primary">S23°32' • W46°38'</p>
               <div className="mt-8 grid grid-cols-8 items-end gap-1" aria-hidden="true">
-                {["h-8", "h-14", "h-11", "h-20", "h-16", "h-24", "h-12", "h-18"].map((heightClass) => <span key={heightClass} className={`bg-brand-primary ${heightClass}`} />)}
+                {["h-8", "h-14", "h-11", "h-20", "h-16", "h-24", "h-12", "h-[4.5rem]"].map((heightClass) => <span key={heightClass} className={`bg-brand-primary ${heightClass}`} />)}
               </div>
               <p className="mt-6 font-display text-4xl font-black uppercase leading-none text-ink-outline">Cultura</p>
             </aside>
