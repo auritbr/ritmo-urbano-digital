@@ -11,14 +11,15 @@ export const Route = createFileRoute("/projetos/$slug")({
   loader: ({ params }) => {
     const project = getProject(params.slug);
     if (!project) throw notFound();
-    return { project };
+    return { slug: project.slug };
   },
   head: ({ loaderData, params }) => {
-    const title = loaderData?.project
-      ? `${loaderData.project.name} — Projeto Pulso Urbano`
+    const project = loaderData ? getProject(loaderData.slug) : undefined;
+    const title = project
+      ? `${project.name} — Projeto Pulso Urbano`
       : "Projeto não encontrado — Pulso Urbano";
     const description =
-      loaderData?.project?.description ?? "Detalhes de projeto do Ponto de Cultura Pulso Urbano.";
+      project?.description ?? "Detalhes de projeto do Ponto de Cultura Pulso Urbano.";
     return {
       meta: [
         { title },
@@ -36,8 +37,11 @@ export const Route = createFileRoute("/projetos/$slug")({
 });
 
 function ProjetoPage() {
-  const { project } = Route.useLoaderData();
-  const lightbox = useLightbox(project.gallery);
+  const { slug } = Route.useLoaderData();
+  const project = getProject(slug);
+  const lightbox = useLightbox(project?.gallery ?? []);
+
+  if (!project) return null;
 
   return (
     <>

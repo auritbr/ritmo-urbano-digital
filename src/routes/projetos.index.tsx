@@ -126,11 +126,10 @@ function ProjectVisual({
           <>
             <SoundWave className="absolute bottom-[5%] left-0 w-36 text-brand-secondary" />
             <div className="absolute right-[2%] top-[8%] flex items-end gap-1" aria-hidden="true">
-              {[5, 9, 14, 10, 16, 8].map((height, barIndex) => (
+              {["h-3", "h-5", "h-7", "h-5", "h-8", "h-4"].map((height, barIndex) => (
                 <span
                   key={`${height}-${barIndex}`}
-                  className="w-1.5 bg-brand-primary"
-                  style={{ height: `${height * 2}px` }}
+                  className={`w-1.5 bg-brand-primary ${height}`}
                 />
               ))}
             </div>
