@@ -228,6 +228,27 @@
   }
 }
 
+@utility news-glass-card {
+  border: 1px solid color-mix(in oklab, var(--color-card) 58%, var(--color-border));
+  background: color-mix(in oklab, var(--color-card) 68%, transparent);
+  box-shadow: 0 8px 30px color-mix(in oklab, var(--color-foreground) 4%, transparent);
+  backdrop-filter: blur(14px);
+  border-radius: calc(var(--radius) + 0.5rem);
+}
+
+[vw-access-button] {
+  right: 1rem !important;
+  top: auto !important;
+  bottom: 5.5rem !important;
+}
+
+@media (min-width: 640px) {
+  [vw-access-button] {
+    right: 1.25rem !important;
+    bottom: 6rem !important;
+  }
+}
+
 @utility nav-link {
   display: inline-flex;
   min-height: 2.75rem;

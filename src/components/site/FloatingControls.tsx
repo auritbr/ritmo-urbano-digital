@@ -2,6 +2,7 @@ import { Accessibility, Check, Cookie, Minus, Plus, RotateCcw } from "lucide-rea
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import { WhatsAppIcon } from "@/components/site/BrandIcons";
 import { organization } from "@/data/site";
 
 export function FloatingControls() {
@@ -71,13 +72,11 @@ export function FloatingControls() {
           ) : null}
         </div>
       </div>
-      <div className="fixed bottom-5 right-4 z-[70] flex flex-col items-end gap-3 sm:right-5">
-        <a className="grid min-h-11 min-w-11 place-items-center rounded-full bg-whatsapp text-whatsapp-foreground shadow-soft transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" href={`https://wa.me/${organization.whatsapp}`} target="_blank" rel="noreferrer" aria-label="Abrir conversa no WhatsApp">
-          <span className="font-display text-sm font-bold">WA</span>
+      <div className="group fixed bottom-5 right-4 z-[70] sm:right-5">
+        <a className="grid size-14 place-items-center rounded-full bg-whatsapp text-whatsapp-foreground shadow-soft transition hover:-translate-y-0.5 hover:bg-whatsapp/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:size-[3.625rem]" href={`https://wa.me/${organization.whatsapp}`} target="_blank" rel="noreferrer" aria-label="Conversar pelo WhatsApp">
+          <WhatsAppIcon className="size-7 sm:size-8" />
         </a>
-        <a className="grid min-h-11 min-w-11 place-items-center rounded-full border border-border bg-background/85 text-foreground shadow-soft backdrop-blur-md transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" href="https://www.gov.br/governodigital/pt-br/vlibras" target="_blank" rel="noreferrer" aria-label="Abrir informações sobre V-Libras">
-          <span className="font-display text-xs font-bold">VL</span>
-        </a>
+        <span className="pointer-events-none absolute right-0 bottom-[calc(100%+0.5rem)] whitespace-nowrap rounded-md bg-ink px-2 py-1 text-xs text-ink-foreground opacity-0 transition-opacity group-hover:opacity-100">Conversar pelo WhatsApp</span>
       </div>
     </>
   );

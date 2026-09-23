@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import { FloatingControls } from "@/components/site/FloatingControls";
 import { Footer } from "@/components/site/Footer";
 import { Navbar } from "@/components/site/Navbar";
+import { VLibrasWidget } from "@/components/site/VLibrasWidget";
 import { organizationJsonLd } from "@/components/site/Seo";
 import { Button } from "@/components/ui/button";
 import appCss from "../styles.css?url";
@@ -107,6 +108,7 @@ function RootComponent() {
       </main>
       <Footer />
       <FloatingControls />
+      <VLibrasWidget />
     </QueryClientProvider>
   );
 }
