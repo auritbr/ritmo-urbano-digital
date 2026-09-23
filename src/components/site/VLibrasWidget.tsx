@@ -13,7 +13,9 @@ export function VLibrasWidget() {
       new window.VLibras.Widget("https://vlibras.gov.br/app");
       document.documentElement.dataset["vlibrasReady"] = "true";
     };
-    const existing = document.querySelector<HTMLScriptElement>('script[data-vlibras-plugin="true"]');
+    const existing = document.querySelector<HTMLScriptElement>(
+      'script[data-vlibras-plugin="true"]',
+    );
     if (existing) {
       existing.addEventListener("load", initialize);
       initialize();
@@ -31,7 +33,9 @@ export function VLibrasWidget() {
   return (
     <div vw="true" className="enabled">
       <div vw-access-button="true" className="active" />
-      <div vw-plugin-wrapper="true"><div className="vw-plugin-top-wrapper" /></div>
+      <div vw-plugin-wrapper="true">
+        <div className="vw-plugin-top-wrapper" />
+      </div>
     </div>
   );
 }

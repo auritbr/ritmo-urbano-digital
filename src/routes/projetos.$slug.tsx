@@ -15,8 +15,11 @@ export const Route = createFileRoute("/projetos/$slug")({
     return { project };
   },
   head: ({ loaderData, params }) => {
-    const title = loaderData?.project ? `${loaderData.project.name} — Projeto Pulso Urbano` : "Projeto não encontrado — Pulso Urbano";
-    const description = loaderData?.project?.description ?? "Detalhes de projeto do Ponto de Cultura Pulso Urbano.";
+    const title = loaderData?.project
+      ? `${loaderData.project.name} — Projeto Pulso Urbano`
+      : "Projeto não encontrado — Pulso Urbano";
+    const description =
+      loaderData?.project?.description ?? "Detalhes de projeto do Ponto de Cultura Pulso Urbano.";
     return {
       meta: [
         { title },
@@ -40,42 +43,103 @@ function ProjetoPage() {
   return (
     <>
       <section className="relative min-h-[78dvh] overflow-hidden bg-ink text-ink-foreground">
-        <img src={project.image.src} alt={project.image.alt} className="absolute inset-0 size-full object-cover" />
+        <img
+          src={project.image.src}
+          alt={project.image.alt}
+          className="absolute inset-0 size-full object-cover"
+        />
         <div className="absolute inset-0 bg-ink/74" aria-hidden="true" />
         <div className="absolute inset-0 urban-grid opacity-25" aria-hidden="true" />
         <div className="container-site relative flex min-h-[78dvh] items-end pb-12 pt-32">
           <div className="max-w-4xl">
-            <div className="mb-8 inline-flex items-center gap-3"><IconCircleButton asChild variant="glass-dark" size="md" label="Voltar para projetos"><Link to="/projetos"><ArrowLeft className="transition-transform group-hover:-translate-x-0.5" aria-hidden="true" /></Link></IconCircleButton><Link to="/projetos" className="font-display text-sm font-semibold text-ink-foreground hover:text-brand-primary">Voltar para projetos</Link></div>
+            <div className="mb-8 inline-flex items-center gap-3">
+              <IconCircleButton asChild variant="glass-dark" size="md" label="Voltar para projetos">
+                <Link to="/projetos">
+                  <ArrowLeft
+                    className="transition-transform group-hover:-translate-x-0.5"
+                    aria-hidden="true"
+                  />
+                </Link>
+              </IconCircleButton>
+              <Link
+                to="/projetos"
+                className="font-display text-sm font-semibold text-ink-foreground hover:text-brand-primary"
+              >
+                Voltar para projetos
+              </Link>
+            </div>
             <p className="label-text text-brand-secondary">Projeto</p>
-            <h1 className="mt-4 max-w-[17ch] font-display text-[clamp(2.5rem,5vw,5rem)] font-bold leading-[1.03] tracking-[-0.02em]">{project.name}</h1>
+            <h1 className="mt-4 max-w-[17ch] font-display text-[clamp(2.5rem,5vw,5rem)] font-bold leading-[1.03] tracking-[-0.02em]">
+              {project.name}
+            </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-ink-muted">{project.description}</p>
             <dl className="mt-8 grid gap-3 sm:grid-cols-4">
-              {[{ label: "Público", value: project.audience }, { label: "Área", value: project.area }, { label: "Local", value: project.location }, { label: "Situação", value: project.status }].map((item) => <div key={item.label} className="rounded-lg border border-ink-line bg-ink-soft p-4"><dt className="label-text text-brand-primary">{item.label}</dt><dd className="mt-2 text-sm text-ink-muted">{item.value}</dd></div>)}
+              {[
+                { label: "Público", value: project.audience },
+                { label: "Área", value: project.area },
+                { label: "Local", value: project.location },
+                { label: "Situação", value: project.status },
+              ].map((item) => (
+                <div key={item.label} className="rounded-lg border border-ink-line bg-ink-soft p-4">
+                  <dt className="label-text text-brand-primary">{item.label}</dt>
+                  <dd className="mt-2 text-sm text-ink-muted">{item.value}</dd>
+                </div>
+              ))}
             </dl>
           </div>
         </div>
       </section>
       <section className="section-y bg-background">
         <div className="container-site grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-center">
-          <img src={project.gallery[1]?.src ?? project.image.src} alt={project.gallery[1]?.alt ?? project.image.alt} className="h-[28rem] w-full rounded-lg object-cover" loading="lazy" />
+          <img
+            src={project.gallery[1]?.src ?? project.image.src}
+            alt={project.gallery[1]?.alt ?? project.image.alt}
+            className="h-[28rem] w-full rounded-lg object-cover"
+            loading="lazy"
+          />
           <div>
             <SectionHeading label="Sobre o projeto" title="Sobre o projeto" />
-            <div className="mt-5 grid gap-4 leading-8 text-muted-foreground">{project.longText.map((text) => <p key={text}>{text}</p>)}</div>
+            <div className="mt-5 grid gap-4 leading-8 text-muted-foreground">
+              {project.longText.map((text) => (
+                <p key={text}>{text}</p>
+              ))}
+            </div>
           </div>
         </div>
       </section>
       <section className="section-y bg-surface paper-grid">
         <div className="container-site">
-          <SectionHeading label="Atividades" title="O que acontece no projeto" description="Oficinas e vivências editáveis, pensadas para receber novas modalidades de acordo com cada ciclo." />
+          <SectionHeading
+            label="Atividades"
+            title="O que acontece no projeto"
+            description="Oficinas e vivências editáveis, pensadas para receber novas modalidades de acordo com cada ciclo."
+          />
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             {project.activities.map((activity) => {
               const Icon = activity.icon;
               return (
-                <article key={activity.name} className="relative overflow-hidden rounded-lg border border-border bg-card p-4">
-                  <div className="aspect-[16/10] overflow-hidden rounded-md"><img src={activity.image.src} alt={activity.image.alt} className="size-full object-cover" loading="lazy" /></div>
+                <article
+                  key={activity.name}
+                  className="relative overflow-hidden rounded-lg border border-border bg-card p-4"
+                >
+                  <div className="aspect-[16/10] overflow-hidden rounded-md">
+                    <img
+                      src={activity.image.src}
+                      alt={activity.image.alt}
+                      className="size-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
                   <div className="mt-4 flex items-start gap-3">
-                    <span className="grid size-10 shrink-0 place-items-center rounded-full border border-border bg-background"><Icon className="size-5 text-brand-primary" aria-hidden="true" /></span>
-                     <div><h3 className="font-display text-lg font-semibold">{activity.name}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{activity.description}</p></div>
+                    <span className="grid size-10 shrink-0 place-items-center rounded-full border border-border bg-background">
+                      <Icon className="size-5 text-brand-primary" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <h3 className="font-display text-lg font-semibold">{activity.name}</h3>
+                      <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                        {activity.description}
+                      </p>
+                    </div>
                   </div>
                 </article>
               );
@@ -86,15 +150,38 @@ function ProjetoPage() {
       <section className="section-y bg-ink text-ink-foreground">
         <div className="container-site grid gap-8 lg:grid-cols-2">
           <div>
-            <SectionHeading label="Metodologia" title="Aprender, experimentar, criar e compartilhar" dark />
+            <SectionHeading
+              label="Metodologia"
+              title="Aprender, experimentar, criar e compartilhar"
+              dark
+            />
             <div className="mt-8 grid gap-3">
-               {["Aprender", "Experimentar", "Criar", "Compartilhar"].map((step, index) => <div key={step} className="flex gap-4 rounded-lg border border-ink-line bg-ink-soft p-4"><span className="font-display text-2xl font-bold text-brand-primary">{String(index + 1).padStart(2, "0")}</span><p className="font-display text-lg font-semibold">{step}</p></div>)}
+              {["Aprender", "Experimentar", "Criar", "Compartilhar"].map((step, index) => (
+                <div
+                  key={step}
+                  className="flex gap-4 rounded-lg border border-ink-line bg-ink-soft p-4"
+                >
+                  <span className="font-display text-2xl font-bold text-brand-primary">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <p className="font-display text-lg font-semibold">{step}</p>
+                </div>
+              ))}
             </div>
           </div>
           <div>
             <SectionHeading label="Impacto" title="Indicadores do ciclo" dark />
             <div className="mt-8 grid grid-cols-2 gap-3">
-               {project.stats.map((stat) => <div key={stat.label} className="rounded-lg border border-ink-line bg-ink-soft p-5"><strong className="font-display text-4xl font-bold text-ink-foreground">{stat.value}</strong><p className="mt-2 text-sm font-semibold uppercase tracking-[0.1em] text-ink-muted">{stat.label}</p></div>)}
+              {project.stats.map((stat) => (
+                <div key={stat.label} className="rounded-lg border border-ink-line bg-ink-soft p-5">
+                  <strong className="font-display text-4xl font-bold text-ink-foreground">
+                    {stat.value}
+                  </strong>
+                  <p className="mt-2 text-sm font-semibold uppercase tracking-[0.1em] text-ink-muted">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -103,7 +190,14 @@ function ProjetoPage() {
         <div className="container-site">
           <SectionHeading label="Galeria" title="Registros do projeto" />
           <div className="mt-10 grid auto-rows-[12rem] gap-3 md:grid-cols-4">
-            {project.gallery.map((image, index) => <GalleryButton key={`${image.alt}-${index}`} image={image} onClick={() => lightbox.open(index)} className={index === 0 ? "md:col-span-2 md:row-span-2" : ""} />)}
+            {project.gallery.map((image, index) => (
+              <GalleryButton
+                key={`${image.alt}-${index}`}
+                image={image}
+                onClick={() => lightbox.open(index)}
+                className={index === 0 ? "md:col-span-2 md:row-span-2" : ""}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -111,13 +205,26 @@ function ProjetoPage() {
         <div className="container-site">
           <figure className="relative overflow-hidden rounded-lg border border-border bg-card p-8">
             <Quote className="absolute right-8 top-6 size-20 text-muted" aria-hidden="true" />
-             <blockquote className="relative max-w-3xl font-display text-2xl font-semibold leading-tight text-foreground">“{project.quote}”</blockquote>
-            <figcaption className="relative mt-5 text-sm font-bold uppercase tracking-[0.12em] text-brand-primary">{project.quoteAuthor}</figcaption>
+            <blockquote className="relative max-w-3xl font-display text-2xl font-semibold leading-tight text-foreground">
+              “{project.quote}”
+            </blockquote>
+            <figcaption className="relative mt-5 text-sm font-bold uppercase tracking-[0.12em] text-brand-primary">
+              {project.quoteAuthor}
+            </figcaption>
           </figure>
         </div>
       </section>
-      <FinalCta title="A cultura continua quando a gente participa." text="Conheça outros projetos, acompanhe os registros e fale com a equipe para fazer parte dessa construção." />
-      <Lightbox images={project.gallery} index={lightbox.index} onClose={lightbox.close} onPrevious={lightbox.previous} onNext={lightbox.next} />
+      <FinalCta
+        title="A cultura continua quando a gente participa."
+        text="Conheça outros projetos, acompanhe os registros e fale com a equipe para fazer parte dessa construção."
+      />
+      <Lightbox
+        images={project.gallery}
+        index={lightbox.index}
+        onClose={lightbox.close}
+        onPrevious={lightbox.previous}
+        onNext={lightbox.next}
+      />
     </>
   );
 }
