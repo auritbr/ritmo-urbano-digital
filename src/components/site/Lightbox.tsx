@@ -37,16 +37,37 @@ export function Lightbox({
     return () => window.removeEventListener("keydown", onKey);
   }, [index, onClose, onNext, onPrevious]);
 
+  useEffect(() => {
+    if (index === null) return;
+    let touchStartX = 0;
+    const onTouchStart = (event: TouchEvent) => {
+      touchStartX = event.changedTouches[0]?.clientX ?? 0;
+    };
+    const onTouchEnd = (event: TouchEvent) => {
+      const touchEndX = event.changedTouches[0]?.clientX ?? touchStartX;
+      const distance = touchEndX - touchStartX;
+      if (Math.abs(distance) < 50) return;
+      if (distance > 0) onPrevious();
+      else onNext();
+    };
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchend", onTouchEnd, { passive: true });
+    return () => {
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [index, onNext, onPrevious]);
+
   if (index === null) return null;
   const image = images[index];
   if (!image) return null;
 
   return (
     <div className="fixed inset-0 z-[80] grid place-items-center bg-ink/90 p-4" role="dialog" aria-modal="true" aria-label="Visualização ampliada da imagem">
-      <Button variant="ghost" size="icon" className="absolute right-4 top-4 min-h-11 min-w-11 rounded-full bg-ink-soft text-ink-foreground hover:bg-ink-line" onClick={onClose} aria-label="Fechar imagem">
+       <Button variant="ghost" size="icon" className="liquid-button absolute right-4 top-4 min-h-11 min-w-11 rounded-full" onClick={onClose} aria-label="Fechar imagem">
         <X aria-hidden="true" />
       </Button>
-      <Button variant="ghost" size="icon" className="absolute left-4 top-1/2 min-h-11 min-w-11 -translate-y-1/2 rounded-full bg-ink-soft text-ink-foreground hover:bg-ink-line" onClick={onPrevious} aria-label="Imagem anterior">
+       <Button variant="ghost" size="icon" className="liquid-button absolute left-3 top-1/2 min-h-11 min-w-11 -translate-y-1/2 rounded-full md:left-4" onClick={onPrevious} aria-label="Imagem anterior">
         <ChevronLeft aria-hidden="true" />
       </Button>
       <figure className="max-h-[84dvh] w-full max-w-5xl">
@@ -56,7 +77,7 @@ export function Lightbox({
           <span>{String(index + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}</span>
         </figcaption>
       </figure>
-      <Button variant="ghost" size="icon" className="absolute right-4 top-1/2 min-h-11 min-w-11 -translate-y-1/2 rounded-full bg-ink-soft text-ink-foreground hover:bg-ink-line" onClick={onNext} aria-label="Próxima imagem">
+       <Button variant="ghost" size="icon" className="liquid-button absolute right-3 top-1/2 min-h-11 min-w-11 -translate-y-1/2 rounded-full md:right-4" onClick={onNext} aria-label="Próxima imagem">
         <ChevronRight aria-hidden="true" />
       </Button>
     </div>

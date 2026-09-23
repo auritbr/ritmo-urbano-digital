@@ -38,7 +38,7 @@ function Index() {
           <div className="grid w-full gap-8 md:grid-cols-[1fr_18rem] md:items-end">
             <div className="max-w-4xl">
               <p className="label-text text-brand-secondary">{organization.label}</p>
-              <h1 className="mt-5 max-w-4xl font-display text-4xl font-black leading-[1.02] tracking-normal md:text-7xl">
+              <h1 className="mt-5 max-w-4xl font-display text-[clamp(2.5rem,5.5vw,4.8rem)] font-bold leading-[1.03] tracking-[-0.02em]">
                 Cultura que nasce da rua e transforma territórios.
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-8 text-ink-muted md:text-lg">
@@ -48,7 +48,7 @@ function Index() {
                 <Button asChild size="lg" className="bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary/90">
                   <Link to="/quem-somos">Conheça nossa história <ArrowRight aria-hidden="true" /></Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-ink-line bg-ink-soft text-ink-foreground hover:bg-ink-line">
+                <Button asChild size="lg" variant="ghost" className="liquid-button">
                   <Link to="/projetos">Conheça os projetos</Link>
                 </Button>
               </div>

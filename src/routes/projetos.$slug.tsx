@@ -44,9 +44,9 @@ function ProjetoPage() {
         <div className="absolute inset-0 urban-grid opacity-25" aria-hidden="true" />
         <div className="container-site relative flex min-h-[78dvh] items-end pb-12 pt-32">
           <div className="max-w-4xl">
-            <Button asChild variant="ghost" className="mb-8 border border-ink-line bg-ink-soft text-ink-foreground hover:bg-ink-line"><Link to="/projetos"><ArrowLeft aria-hidden="true" /> Voltar para projetos</Link></Button>
+            <Button asChild variant="ghost" className="liquid-button group mb-8"><Link to="/projetos"><ArrowLeft className="transition-transform group-hover:-translate-x-0.5" aria-hidden="true" /> Voltar para projetos</Link></Button>
             <p className="label-text text-brand-secondary">Projeto</p>
-            <h1 className="mt-4 font-display text-4xl font-black leading-tight md:text-7xl">{project.name}</h1>
+            <h1 className="mt-4 max-w-[17ch] font-display text-[clamp(2.5rem,5vw,5rem)] font-bold leading-[1.03] tracking-[-0.02em]">{project.name}</h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-ink-muted">{project.description}</p>
             <dl className="mt-8 grid gap-3 sm:grid-cols-4">
               {[{ label: "Público", value: project.audience }, { label: "Área", value: project.area }, { label: "Local", value: project.location }, { label: "Situação", value: project.status }].map((item) => <div key={item.label} className="rounded-lg border border-ink-line bg-ink-soft p-4"><dt className="label-text text-brand-primary">{item.label}</dt><dd className="mt-2 text-sm text-ink-muted">{item.value}</dd></div>)}

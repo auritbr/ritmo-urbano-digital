@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 
+import { UrbanLines } from "@/components/site/UrbanGraphics";
 import type { ImageRef } from "@/data/site";
 
 export function InternalHero({
@@ -24,6 +25,7 @@ export function InternalHero({
             {title}
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-8 text-ink-muted md:text-lg">{description}</p>
+           <UrbanLines className="mt-7 w-32 text-brand-primary opacity-70" />
         </div>
         <div className="relative min-h-32 overflow-hidden rounded-lg border border-ink-line bg-ink-soft p-5 md:min-h-56">
           {image ? (
