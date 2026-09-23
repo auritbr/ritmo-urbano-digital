@@ -38,8 +38,8 @@ function ProjetosPage() {
           <div className="mt-10 grid gap-3 md:grid-cols-6">
             {steps.map((step, index) => (
               <article key={step} className="relative rounded-lg border border-ink-line bg-ink-soft p-5">
-                <span className="font-display text-3xl font-black text-brand-primary">{String(index + 1).padStart(2, "0")}</span>
-                <h3 className="mt-8 font-display text-lg font-black">{step}</h3>
+                <span className="font-display text-3xl font-bold text-brand-primary">{String(index + 1).padStart(2, "0")}</span>
+                <h3 className="mt-8 font-display text-lg font-semibold">{step}</h3>
                 <p className="mt-2 text-sm leading-6 text-ink-muted">Etapa acompanhada pela equipe para garantir coerência pedagógica, produção e memória.</p>
               </article>
             ))}
@@ -51,7 +51,7 @@ function ProjetosPage() {
           {projects.map((project) => (
             <div key={project.slug} className="rounded-lg border border-border bg-card p-5">
               <p className="label-text text-brand-primary">{project.area}</p>
-              <h2 className="mt-3 font-display text-2xl font-black">{project.name}</h2>
+              <h2 className="mt-3 font-display text-2xl font-semibold">{project.name}</h2>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">{project.description}</p>
               <Button asChild variant="link" className="mt-4 px-0 font-display font-bold"><Link to="/projetos/$slug" params={{ slug: project.slug }}>Conhecer projeto <ArrowRight aria-hidden="true" /></Link></Button>
             </div>

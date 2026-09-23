@@ -38,7 +38,7 @@ function Index() {
           <div className="grid w-full gap-8 md:grid-cols-[1fr_18rem] md:items-end">
             <div className="max-w-4xl">
               <p className="label-text text-brand-secondary">{organization.label}</p>
-              <h1 className="mt-5 max-w-4xl font-display text-4xl font-black leading-[1.02] tracking-normal md:text-7xl">
+              <h1 className="mt-5 max-w-4xl font-display text-[clamp(2.5rem,5.5vw,4.8rem)] font-bold leading-[1.03] tracking-[-0.02em]">
                 Cultura que nasce da rua e transforma territórios.
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-8 text-ink-muted md:text-lg">
@@ -48,7 +48,7 @@ function Index() {
                 <Button asChild size="lg" className="bg-brand-primary text-brand-primary-foreground hover:bg-brand-primary/90">
                   <Link to="/quem-somos">Conheça nossa história <ArrowRight aria-hidden="true" /></Link>
                 </Button>
-                <Button asChild size="lg" variant="outline" className="border-ink-line bg-ink-soft text-ink-foreground hover:bg-ink-line">
+                <Button asChild size="lg" variant="ghost" className="liquid-button">
                   <Link to="/projetos">Conheça os projetos</Link>
                 </Button>
               </div>
@@ -58,7 +58,7 @@ function Index() {
               <div className="mt-8 grid grid-cols-8 items-end gap-1" aria-hidden="true">
                 {["h-8", "h-14", "h-11", "h-20", "h-16", "h-24", "h-12", "h-[4.5rem]"].map((heightClass) => <span key={heightClass} className={`bg-brand-primary ${heightClass}`} />)}
               </div>
-              <p className="mt-6 font-display text-4xl font-black uppercase leading-none text-ink-outline">Cultura</p>
+              <p className="mt-6 font-display text-4xl font-bold uppercase leading-none text-ink-outline">Cultura</p>
             </aside>
           </div>
         </div>
@@ -80,7 +80,7 @@ function Index() {
             <div className="mt-7 grid grid-cols-3 gap-3">
               {institutionalNumbers.map((item) => (
                 <div key={item.label} className="border-l-2 border-brand-primary pl-3">
-                  <strong className="block font-display text-2xl font-black text-foreground">{item.value}</strong>
+                  <strong className="block font-display text-2xl font-bold text-foreground">{item.value}</strong>
                   <span className="text-xs font-semibold uppercase tracking-[0.08em] text-muted-foreground">{item.label}</span>
                 </div>
               ))}
@@ -98,9 +98,9 @@ function Index() {
               const Icon = area.icon;
               return (
                 <article key={area.title} className={`relative overflow-hidden rounded-lg border border-border bg-card p-5 ${index === 0 || index === 3 ? "md:col-span-3" : "md:col-span-2"}`}>
-                  <span className="font-display text-5xl font-black text-muted">{area.number}</span>
+                  <span className="font-display text-5xl font-bold text-muted">{area.number}</span>
                   <Icon className="absolute right-5 top-5 size-7 text-brand-primary" aria-hidden="true" />
-                  <h3 className="mt-8 font-display text-xl font-black text-foreground">{area.title}</h3>
+                  <h3 className="mt-8 font-display text-xl font-semibold text-foreground">{area.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">{area.description}</p>
                 </article>
               );
@@ -134,7 +134,7 @@ function Index() {
               return (
                 <article key={element.name} className="relative min-h-56 overflow-hidden rounded-lg border border-ink-line bg-ink-soft p-5">
                   <Icon className="size-8 text-brand-primary" aria-hidden="true" />
-                  <h3 className="mt-10 font-display text-4xl font-black text-ink-foreground">{element.name}</h3>
+                  <h3 className="mt-10 font-display text-4xl font-bold text-ink-foreground">{element.name}</h3>
                   <p className="mt-3 text-sm leading-6 text-ink-muted">{element.description}</p>
                   <CircleDot className="absolute -bottom-6 -right-6 size-24 text-ink-outline" aria-hidden="true" />
                 </article>
@@ -149,7 +149,7 @@ function Index() {
         <div className="absolute inset-0 bg-ink/68" aria-hidden="true" />
         <div className="container-site relative">
           <MapPinned className="size-9 text-brand-secondary" aria-hidden="true" />
-          <h2 className="mt-4 max-w-3xl font-display text-3xl font-black leading-tight md:text-5xl">Da rua para a comunidade. Da comunidade para o mundo.</h2>
+          <h2 className="mt-4 max-w-3xl font-display text-3xl font-bold leading-tight tracking-[-0.02em] md:text-5xl">Da rua para a comunidade. Da comunidade para o mundo.</h2>
           <p className="mt-4 max-w-2xl text-ink-muted">Cultura, identidade, formação, pertencimento e transformação são palavras que organizam nossa prática diária.</p>
         </div>
       </section>
@@ -184,7 +184,7 @@ function Index() {
         <div className="container-site grid gap-8 rounded-lg border border-border bg-card p-6 md:grid-cols-[0.8fr_1.2fr] md:p-8">
           <div>
             <p className="label-text text-brand-primary">Compromisso institucional</p>
-            <h2 className="mt-3 font-display text-3xl font-black leading-tight text-foreground md:text-5xl">Transparência também faz parte da nossa cultura.</h2>
+            <h2 className="mt-3 font-display text-3xl font-bold leading-tight tracking-[-0.02em] text-foreground md:text-5xl">Transparência também faz parte da nossa cultura.</h2>
           </div>
           <div>
             <p className="text-muted-foreground leading-8">Organizamos documentos, certificados, reconhecimentos, relatórios e registros para facilitar a consulta pública e fortalecer uma relação de confiança com a comunidade.</p>

@@ -37,8 +37,8 @@ function QuemSomosPage() {
             {timeline.map((item) => (
               <article key={item.year} className="relative border-l border-ink-line pl-5">
                 <span className="absolute -left-2 top-0 size-4 rounded-full bg-brand-primary" aria-hidden="true" />
-                <strong className="font-display text-5xl font-black text-ink-outline">{item.year}</strong>
-                <h3 className="mt-4 font-display text-xl font-black text-ink-foreground">{item.title}</h3>
+                <strong className="font-display text-5xl font-bold text-ink-outline">{item.year}</strong>
+                <h3 className="mt-4 font-display text-xl font-semibold text-ink-foreground">{item.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-ink-muted">{item.text}</p>
               </article>
             ))}
@@ -51,12 +51,12 @@ function QuemSomosPage() {
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
             <article className="rounded-lg border border-border bg-card p-6 lg:row-span-2">
               <p className="label-text text-brand-primary">Missão</p>
-              <h3 className="mt-4 font-display text-2xl font-black">Fortalecer pessoas e territórios pela cultura Hip Hop.</h3>
+              <h3 className="mt-4 font-display text-2xl font-semibold">Fortalecer pessoas e territórios pela cultura Hip Hop.</h3>
               <p className="mt-4 leading-7 text-muted-foreground">Promover formação, criação e circulação cultural com responsabilidade, escuta e participação comunitária.</p>
             </article>
             <article className="rounded-lg border border-border bg-ink p-6 text-ink-foreground lg:col-span-2">
               <p className="label-text text-brand-secondary">Visão</p>
-              <h3 className="mt-4 font-display text-2xl font-black">Ser referência em práticas culturais urbanas que unem educação, memória e transformação social.</h3>
+              <h3 className="mt-4 font-display text-2xl font-semibold">Ser referência em práticas culturais urbanas que unem educação, memória e transformação social.</h3>
             </article>
             <article className="rounded-lg border border-border bg-card p-6 lg:col-span-2">
               <p className="label-text text-brand-primary">Valores</p>
@@ -76,7 +76,7 @@ function QuemSomosPage() {
           <div className="grid gap-3 sm:grid-cols-2">
             {hipHopElements.map((item) => {
               const Icon = item.icon;
-              return <article key={item.name} className="rounded-lg border border-border bg-card p-5"><Icon className="size-7 text-brand-primary" aria-hidden="true" /><h3 className="mt-5 font-display text-xl font-black">{item.name}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{item.description}</p></article>;
+              return <article key={item.name} className="rounded-lg border border-border bg-card p-5"><Icon className="size-7 text-brand-primary" aria-hidden="true" /><h3 className="mt-5 font-display text-xl font-semibold">{item.name}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{item.description}</p></article>;
             })}
           </div>
         </div>

@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 
+import { UrbanLines } from "@/components/site/UrbanGraphics";
 import type { ImageRef } from "@/data/site";
 
 export function InternalHero({
@@ -20,10 +21,11 @@ export function InternalHero({
       <div className="container-site relative grid gap-8 py-24 pt-32 md:grid-cols-[1.1fr_0.9fr] md:items-end md:py-28 md:pt-36">
         <div className="max-w-3xl">
           <p className="label-text text-brand-secondary">{label}</p>
-          <h1 className="mt-4 font-display text-4xl font-black leading-tight tracking-normal text-ink-foreground md:text-6xl">
+          <h1 className="mt-4 max-w-[18ch] font-display text-[clamp(2.35rem,5vw,4.6rem)] font-bold leading-[1.03] tracking-[-0.02em] text-ink-foreground">
             {title}
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-8 text-ink-muted md:text-lg">{description}</p>
+           <UrbanLines className="mt-7 w-32 text-brand-primary opacity-70" />
         </div>
         <div className="relative min-h-32 overflow-hidden rounded-lg border border-ink-line bg-ink-soft p-5 md:min-h-56">
           {image ? (
@@ -31,7 +33,7 @@ export function InternalHero({
           ) : null}
           <div className="absolute inset-0 bg-ink/50" aria-hidden="true" />
           <div className="relative flex h-full items-end justify-between gap-4">
-            <span className="max-w-44 font-display text-5xl font-black uppercase leading-none text-ink-outline opacity-60 md:text-7xl">Cultura</span>
+            <span className="max-w-44 font-display text-5xl font-bold uppercase leading-none text-ink-outline opacity-45 md:text-7xl">Cultura</span>
             <ArrowUpRight className="size-9 text-brand-primary" aria-hidden="true" />
           </div>
         </div>

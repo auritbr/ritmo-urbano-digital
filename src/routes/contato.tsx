@@ -25,7 +25,7 @@ function ContatoPage() {
           <SectionHeading title="Vamos conversar?" align="center" description="A equipe está disponível para dialogar com escolas, coletivos, organizações, artistas e pessoas interessadas em fortalecer a cultura no território." />
           <div className="mt-10 grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
             <aside className="rounded-lg border border-border bg-card p-6">
-              <h2 className="font-display text-2xl font-black">Informações</h2>
+               <h2 className="font-display text-2xl font-bold">Informações</h2>
               <ul className="mt-6 grid gap-5 text-muted-foreground">
                 <li className="flex gap-3"><MapPin className="mt-1 size-5 shrink-0 text-brand-primary" aria-hidden="true" /><span>{organization.address}</span></li>
                 <li className="flex gap-3"><Mail className="mt-1 size-5 shrink-0 text-brand-primary" aria-hidden="true" /><span>{organization.email}</span></li>
@@ -55,7 +55,7 @@ function ContatoPage() {
           <div className="mt-8 grid gap-4 md:grid-cols-4">
             {[{ name: "Instagram", icon: Instagram }, { name: "Facebook", icon: Facebook }, { name: "YouTube", icon: Youtube }, { name: "WhatsApp", icon: Phone }].map((item) => {
               const Icon = item.icon;
-              return <a key={item.name} href={item.name === "WhatsApp" ? `https://wa.me/${organization.whatsapp}` : "https://example.com"} target="_blank" rel="noreferrer" className="rounded-lg border border-border bg-card p-5 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><Icon className="size-7 text-brand-primary" aria-hidden="true" /><h2 className="mt-5 font-display text-xl font-black">{item.name}</h2><p className="mt-2 text-sm text-muted-foreground">Acompanhe agendas, registros e chamadas públicas.</p></a>;
+               return <a key={item.name} href={item.name === "WhatsApp" ? `https://wa.me/${organization.whatsapp}` : "https://example.com"} target="_blank" rel="noreferrer" className="rounded-lg border border-border bg-card p-5 transition hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><Icon className="size-7 text-brand-primary" aria-hidden="true" /><h2 className="mt-5 font-display text-xl font-semibold">{item.name}</h2><p className="mt-2 text-sm text-muted-foreground">Acompanhe agendas, registros e chamadas públicas.</p></a>;
             })}
           </div>
         </div>
