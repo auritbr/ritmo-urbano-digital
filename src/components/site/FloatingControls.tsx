@@ -34,7 +34,7 @@ export function FloatingControls() {
 
   return (
     <>
-      <div className="fixed bottom-5 left-4 z-[70] grid gap-3 sm:left-5">
+      <div className="fixed bottom-5 left-4 z-[70] flex gap-2 sm:left-5">
         <div className="relative">
           <IconCircleButton
             variant="glass-light"

@@ -33,9 +33,9 @@ function Index() {
   const firstProject = projects[0];
   const secondProject = projects[1];
   const thirdProject = projects[2];
-  if (!firstProject || !secondProject || !thirdProject) return null;
   const galleryPreview = [images.stage, images.breaking, images.dj, images.graffiti, images.craft];
   const lightbox = useLightbox(galleryPreview);
+  if (!firstProject || !secondProject || !thirdProject) return null;
 
   return (
     <>

@@ -244,14 +244,15 @@
 
 [vw-access-button] {
   right: 1rem !important;
-  top: auto !important;
-  bottom: 5.5rem !important;
+  top: 52% !important;
+  bottom: auto !important;
+  transform: translateY(-50%) !important;
 }
 
 @media (min-width: 640px) {
   [vw-access-button] {
     right: 1.25rem !important;
-    bottom: 6rem !important;
+    top: 50% !important;
   }
 }
 
