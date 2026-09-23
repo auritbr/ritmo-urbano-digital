@@ -10,8 +10,8 @@ export function Logo({ compact = false }: { compact?: boolean }) {
       </span>
       {!compact ? (
         <span className="grid leading-none">
-          <span className="font-display text-sm font-black uppercase tracking-normal text-foreground">Pulso Urbano</span>
-          <span className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">Ponto de Cultura</span>
+          <span className="font-display text-sm font-black uppercase tracking-normal text-current">Pulso Urbano</span>
+          <span className="mt-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-current opacity-70">Ponto de Cultura</span>
         </span>
       ) : null}
     </Link>
