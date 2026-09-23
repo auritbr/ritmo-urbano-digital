@@ -47,9 +47,13 @@ function NoticiaPage() {
   }, []);
 
   const copyLink = async () => {
-    if (navigator.clipboard) await navigator.clipboard.writeText(shareUrl);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 1800);
+    try {
+      if (navigator.clipboard) await navigator.clipboard.writeText(shareUrl);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      setCopied(false);
+    }
   };
 
   return (
