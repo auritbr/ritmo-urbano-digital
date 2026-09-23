@@ -71,7 +71,9 @@ function ProjetoPage() {
             <h1 className="mt-2.5 max-w-[19ch] font-display text-[clamp(2rem,4vw,4.2rem)] font-bold leading-[1.04] tracking-[-0.02em]">
               {project.name}
             </h1>
-            <p className="mt-3 max-w-2xl text-base leading-7 text-ink-muted md:text-lg">{project.description}</p>
+            <p className="mt-3 max-w-2xl text-base leading-7 text-ink-muted md:text-lg">
+              {project.description}
+            </p>
           </div>
         </div>
       </section>
@@ -79,9 +81,9 @@ function ProjetoPage() {
         <div className="container-site mx-auto max-w-[53.125rem] text-center">
           <SectionHeading label="Sobre o projeto" title={project.name} align="center" />
           <div className="mx-auto mt-5 grid max-w-[51.25rem] gap-4 text-base leading-8 text-muted-foreground md:text-lg">
-              {project.longText.map((text) => (
-                <p key={text}>{text}</p>
-              ))}
+            {project.longText.map((text) => (
+              <p key={text}>{text}</p>
+            ))}
           </div>
           <div className="mx-auto mt-6 h-1 w-20 bg-brand-primary" aria-hidden="true" />
         </div>
@@ -94,30 +96,47 @@ function ProjetoPage() {
             description="Oficinas e vivências editáveis, pensadas para receber novas modalidades de acordo com cada ciclo."
           />
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {[...project.activities, {
-              name: "Registro e memória",
-              description: "Documentação dos processos, encontros e criações que constroem a trajetória do projeto.",
-              icon: project.slug === "projeto-1" ? MoveRight : Grid3X3,
-              image: project.image,
-            }].slice(0, project.activities.length <= 3 ? 4 : 6).map((activity, index) => {
-              const Icon = activity.icon;
-              return (
-                <article
-                  key={activity.name}
-                  className="group relative min-h-52 overflow-hidden rounded-xl border border-border bg-card p-5"
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <span className="font-display text-sm font-bold text-brand-primary">{String(index + 1).padStart(2, "0")}</span>
-                    <span className={`grid size-10 place-items-center border border-border text-brand-primary ${index % 3 === 0 ? "rounded-full" : index % 3 === 1 ? "rounded-tl-2xl rounded-br-2xl" : "rounded-md"}`}>
-                      <Icon className="size-5" aria-hidden="true" />
-                    </span>
-                  </div>
-                  <h3 className="mt-7 font-display text-lg font-bold uppercase leading-tight">{activity.name}</h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{activity.description}</p>
-                  <div className={`absolute bottom-0 left-5 right-5 h-1 transition-transform duration-300 group-hover:scale-x-105 ${index % 2 === 0 ? "bg-brand-primary" : "bg-brand-secondary"}`} aria-hidden="true" />
-                </article>
-              );
-            })}
+            {[
+              ...project.activities,
+              {
+                name: "Registro e memória",
+                description:
+                  "Documentação dos processos, encontros e criações que constroem a trajetória do projeto.",
+                icon: project.slug === "projeto-1" ? MoveRight : Grid3X3,
+                image: project.image,
+              },
+            ]
+              .slice(0, project.activities.length <= 3 ? 4 : 6)
+              .map((activity, index) => {
+                const Icon = activity.icon;
+                return (
+                  <article
+                    key={activity.name}
+                    className="group relative min-h-52 overflow-hidden rounded-xl border border-border bg-card p-5"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <span className="font-display text-sm font-bold text-brand-primary">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <span
+                        className={`grid size-10 place-items-center border border-border text-brand-primary ${index % 3 === 0 ? "rounded-full" : index % 3 === 1 ? "rounded-tl-2xl rounded-br-2xl" : "rounded-md"}`}
+                      >
+                        <Icon className="size-5" aria-hidden="true" />
+                      </span>
+                    </div>
+                    <h3 className="mt-7 font-display text-lg font-bold uppercase leading-tight">
+                      {activity.name}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                      {activity.description}
+                    </p>
+                    <div
+                      className={`absolute bottom-0 left-5 right-5 h-1 transition-transform duration-300 group-hover:scale-x-105 ${index % 2 === 0 ? "bg-brand-primary" : "bg-brand-secondary"}`}
+                      aria-hidden="true"
+                    />
+                  </article>
+                );
+              })}
           </div>
         </div>
       </section>

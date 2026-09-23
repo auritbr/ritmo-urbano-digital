@@ -45,7 +45,10 @@ function ProjetosPage() {
           {projects.map((project, index) => (
             <ProjectEditorial key={project.slug} project={project} index={index} />
           ))}
-          <nav className="flex items-center justify-center gap-2" aria-label="Paginação de projetos">
+          <nav
+            className="flex items-center justify-center gap-2"
+            aria-label="Paginação de projetos"
+          >
             <IconCircleButton label="Página anterior" size="md" variant="glass-light" disabled>
               <ChevronLeft aria-hidden="true" />
             </IconCircleButton>
@@ -74,7 +77,9 @@ function ProjectEditorial({ project, index }: { project: Project; index: number 
         <h2 className="mt-3 max-w-[14ch] font-display text-3xl font-bold leading-[1.08] text-foreground md:text-4xl lg:text-5xl">
           {project.name}
         </h2>
-        <p className="mt-4 max-w-xl text-lg font-medium leading-7 text-foreground">{project.summary}</p>
+        <p className="mt-4 max-w-xl text-lg font-medium leading-7 text-foreground">
+          {project.summary}
+        </p>
         <p className="mt-3 max-w-xl leading-7 text-muted-foreground">{project.description}</p>
         <Button asChild variant="link" className="mt-5 h-auto px-0 font-display font-bold">
           <Link to="/projetos/$slug" params={{ slug: project.slug }}>
@@ -87,7 +92,15 @@ function ProjectEditorial({ project, index }: { project: Project; index: number 
   );
 }
 
-function ProjectVisual({ project, index, imageFirst }: { project: Project; index: number; imageFirst: boolean }) {
+function ProjectVisual({
+  project,
+  index,
+  imageFirst,
+}: {
+  project: Project;
+  index: number;
+  imageFirst: boolean;
+}) {
   return (
     <div className={`relative mx-auto w-full max-w-[31rem] ${imageFirst ? "md:order-1" : ""}`}>
       <div className="relative aspect-square">
@@ -114,15 +127,25 @@ function ProjectVisual({ project, index, imageFirst }: { project: Project; index
             <SoundWave className="absolute bottom-[5%] left-0 w-36 text-brand-secondary" />
             <div className="absolute right-[2%] top-[8%] flex items-end gap-1" aria-hidden="true">
               {[5, 9, 14, 10, 16, 8].map((height, barIndex) => (
-                <span key={`${height}-${barIndex}`} className="w-1.5 bg-brand-primary" style={{ height: `${height * 2}px` }} />
+                <span
+                  key={`${height}-${barIndex}`}
+                  className="w-1.5 bg-brand-primary"
+                  style={{ height: `${height * 2}px` }}
+                />
               ))}
             </div>
           </>
         ) : (
           <>
             <UrbanLines className="absolute bottom-[2%] right-0 w-40 text-brand-primary" />
-            <MoveUpRight className="absolute left-[2%] top-[8%] size-12 text-brand-secondary" aria-hidden="true" />
-            <div className="paper-grid absolute right-[2%] top-[5%] size-24 opacity-50" aria-hidden="true" />
+            <MoveUpRight
+              className="absolute left-[2%] top-[8%] size-12 text-brand-secondary"
+              aria-hidden="true"
+            />
+            <div
+              className="paper-grid absolute right-[2%] top-[5%] size-24 opacity-50"
+              aria-hidden="true"
+            />
           </>
         )}
       </div>
