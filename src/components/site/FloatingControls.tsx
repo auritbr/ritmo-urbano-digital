@@ -34,12 +34,11 @@ export function FloatingControls() {
 
   return (
     <>
-      <div className="fixed bottom-5 left-4 z-[70] flex gap-2 sm:left-5">
+      <div className="floating-accessibility-controls fixed bottom-[1.125rem] left-4 z-[70] flex flex-col items-center gap-2.5 sm:bottom-6 sm:left-6 sm:gap-3">
         <div className="relative">
           <IconCircleButton
             variant="solid"
-            className="bg-ink text-ink-foreground shadow-soft hover:bg-ink/90"
-            size="md"
+            className="size-[3.125rem] bg-ink text-ink-foreground shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:bg-ink/90 sm:size-14"
             onClick={() => setCookiesOpen((value) => !value)}
             label="Abrir preferências de cookies"
           >
@@ -47,7 +46,7 @@ export function FloatingControls() {
           </IconCircleButton>
           <span className="floating-tooltip">Cookies</span>
           {cookiesOpen ? (
-            <div className="glass-panel absolute bottom-14 left-0 w-[min(82vw,22rem)] p-4">
+            <div className="glass-panel absolute bottom-[calc(100%+0.6rem)] left-0 w-[min(82vw,22rem)] p-4">
               <h2 className="font-display text-base font-semibold text-foreground">Cookies</h2>
               <p className="mt-2 text-sm leading-6 text-muted-foreground">
                 Usamos cookies essenciais e métricas simples para melhorar a navegação neste site
@@ -76,8 +75,7 @@ export function FloatingControls() {
         <div className="relative">
           <IconCircleButton
             variant="solid"
-            className="bg-ink text-ink-foreground shadow-soft hover:bg-ink/90"
-            size="md"
+            className="size-[3.375rem] bg-ink text-ink-foreground shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:bg-ink/90 sm:size-[3.625rem]"
             onClick={() => setAccessOpen((value) => !value)}
             label="Abrir recursos de acessibilidade"
           >
@@ -85,7 +83,7 @@ export function FloatingControls() {
           </IconCircleButton>
           <span className="floating-tooltip">Acessibilidade</span>
           {accessOpen ? (
-            <div className="glass-panel absolute bottom-14 left-0 w-[min(86vw,24rem)] p-4">
+            <div className="glass-panel absolute bottom-[calc(100%+0.6rem)] left-0 w-[min(86vw,24rem)] p-4">
               <h2 className="font-display text-base font-semibold text-foreground">
                 Acessibilidade
               </h2>
