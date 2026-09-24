@@ -75,7 +75,7 @@ export function FloatingControls() {
         <div className="relative">
           <IconCircleButton
             variant="solid"
-            className="size-10 bg-ink text-ink-foreground shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:bg-ink/90 sm:size-[1.15rem] sm:top-auto sm:size-11"
+            className="size-10 bg-ink text-ink-foreground shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:bg-ink/90 sm:size-11"
             onClick={() => setAccessOpen((value) => !value)}
             label="Abrir recursos de acessibilidade"
           >
