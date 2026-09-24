@@ -7,13 +7,7 @@ import { SoundWave, UrbanLines, VinylOutline } from "@/components/site/UrbanGrap
 import type { NewsItem, Project } from "@/data/site";
 import { team } from "@/data/site";
 
-export function ProjectFeature({
-  project,
-  index = 0,
-}: {
-  project: Project;
-  index?: number;
-}) {
+export function ProjectFeature({ project, index = 0 }: { project: Project; index?: number }) {
   const visual = index % 3;
 
   return (
@@ -33,7 +27,10 @@ export function ProjectFeature({
           className="size-full object-cover transition duration-500 group-hover:scale-[1.02]"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent" aria-hidden="true" />
+        <div
+          className="absolute inset-0 bg-gradient-to-t from-ink/45 via-transparent to-transparent"
+          aria-hidden="true"
+        />
         {visual === 0 ? (
           <VinylOutline className="absolute -right-8 -top-8 size-36 text-brand-primary opacity-90 transition-transform duration-300 group-hover:translate-x-1" />
         ) : null}
@@ -43,16 +40,17 @@ export function ProjectFeature({
         {visual === 2 ? (
           <>
             <UrbanLines className="absolute right-4 top-4 w-32 text-brand-primary transition-transform duration-300 group-hover:translate-x-1" />
-            <MoveUpRight className="absolute bottom-5 right-5 size-8 text-brand-secondary" aria-hidden="true" />
+            <MoveUpRight
+              className="absolute bottom-5 right-5 size-8 text-brand-secondary"
+              aria-hidden="true"
+            />
           </>
         ) : null}
       </div>
       <div className="relative border-t-2 border-brand-primary pt-5">
         <div className="mb-3 flex items-center justify-between gap-4">
           <span className="label-text text-brand-primary">{project.category}</span>
-          <span className="text-xs font-semibold text-muted-foreground">
-            {project.status}
-          </span>
+          <span className="text-xs font-semibold text-muted-foreground">{project.status}</span>
         </div>
         <h3 className="font-display text-xl font-bold leading-tight text-foreground md:text-2xl">
           {project.name}
