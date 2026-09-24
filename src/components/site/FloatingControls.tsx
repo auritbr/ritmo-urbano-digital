@@ -38,11 +38,11 @@ export function FloatingControls() {
         <div className="relative">
           <IconCircleButton
             variant="solid"
-            className="size-[3.125rem] bg-ink text-ink-foreground shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:bg-ink/90 sm:size-14"
+            className="size-10 bg-ink text-ink-foreground shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:bg-ink/90 sm:size-11"
             onClick={() => setCookiesOpen((value) => !value)}
             label="Abrir preferências de cookies"
           >
-            <Cookie aria-hidden="true" />
+            <Cookie aria-hidden="true" className="size-4 sm:size-[1.15rem]" />
           </IconCircleButton>
           <span className="floating-tooltip">Cookies</span>
           {cookiesOpen ? (
@@ -75,11 +75,11 @@ export function FloatingControls() {
         <div className="relative">
           <IconCircleButton
             variant="solid"
-            className="size-[3.375rem] bg-ink text-ink-foreground shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:bg-ink/90 sm:size-[3.625rem]"
+            className="size-10 bg-ink text-ink-foreground shadow-[0_8px_24px_rgba(0,0,0,0.12)] hover:bg-ink/90 sm:size-[1.15rem] sm:top-auto sm:size-11"
             onClick={() => setAccessOpen((value) => !value)}
             label="Abrir recursos de acessibilidade"
           >
-            <Accessibility aria-hidden="true" />
+            <Accessibility aria-hidden="true" className="size-4 sm:size-[1.15rem]" />
           </IconCircleButton>
           <span className="floating-tooltip">Acessibilidade</span>
           {accessOpen ? (
