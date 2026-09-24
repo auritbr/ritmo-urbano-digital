@@ -37,7 +37,8 @@ export function FloatingControls() {
       <div className="fixed bottom-5 left-4 z-[70] flex gap-2 sm:left-5">
         <div className="relative">
           <IconCircleButton
-            variant="glass-light"
+            variant="solid"
+            className="bg-ink text-ink-foreground shadow-soft hover:bg-ink/90"
             size="md"
             onClick={() => setCookiesOpen((value) => !value)}
             label="Abrir preferências de cookies"
@@ -74,7 +75,8 @@ export function FloatingControls() {
         </div>
         <div className="relative">
           <IconCircleButton
-            variant="glass-light"
+            variant="solid"
+            className="bg-ink text-ink-foreground shadow-soft hover:bg-ink/90"
             size="md"
             onClick={() => setAccessOpen((value) => !value)}
             label="Abrir recursos de acessibilidade"
